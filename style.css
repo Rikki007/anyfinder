@@ -1,0 +1,98 @@
+/* alegreya-sans-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./font/alegreya-sans-v24-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* alegreya-sans-italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Alegreya Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('./font/alegreya-sans-v24-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* alegreya-sans-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./font/alegreya-sans-v24-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Alegreya Sans';
+  font-size: 18px;
+  max-width: 90rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* header */
+
+.container {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navlist {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo {
+  max-width: 12rem;
+  border-radius: 2rem;
+}
+
+.navlist__item {
+  list-style-type: none;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.navlist__item:hover {
+  text-shadow: 1px 1px 2px black;
+}
+
+.navlist__link {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-family: 'Alegreya Sans';
+  font-size: 22px;
+  
+}
+
+.navlist__link:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: all 0.3s;
+}
+
+.navlist__link:hover:after, .navlist__link:focus:after {
+  width: 100%;
+}
+
+/* header */
+
+/* main */
+/* main */
+
+/* footer */
+/* footer */
