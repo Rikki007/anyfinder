@@ -4,23 +4,23 @@
 <main class="main-container">
   <h1 class="title">Registration</h1>
   <div class="reg-window">
-    <form action="#">
+    <form action="check.php" method="post">
       <div class="form-container">
         <ul class="fields">
           <li class="fields__component">
             <label for="name">Enter your name</label>
           </li>
           <li class="fields__component">
-            <input class="input" type="text" placeholder="Vanya" id="name" required>
+            <input class="input" type="text" placeholder="Vanya" id="name" name="name" required>
           </li>
         </ul>
 
         <ul class="fields">
           <li class="fields__component">
-            <label for="email">Enter email</label>
+            <label for="login">Enter login</label>
           </li>
           <li class="fields__component">
-            <input class="input" type="text" placeholder="vanya@gmail.com" id="email" required>
+            <input class="input" type="text" placeholder="vanya1993" id="login" name="login" required>
           </li>
         </ul>
 
@@ -29,16 +29,7 @@
             <label for="password">Enter password</label>
           </li>
           <li class="fields__component">
-            <input class="input" type="password" placeholder="1234" id="password" required>
-          </li>
-        </ul>
-
-        <ul class="fields">
-          <li class="fields__component">
-            <label for="password">Repeat your password</label>
-          </li>
-          <li class="fields__component">
-            <input class="input" type="password" placeholder="1234" id="password" required>
+            <input class="input" type="password" placeholder="1234" id="password" name="password" required>
           </li>
         </ul>
       </div>

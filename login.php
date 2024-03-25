@@ -4,14 +4,14 @@
   <main class="main-container">
   <h1 class="title">Log in</h1>
   <div class="reg-window">
-    <form action="#">
+    <form action="auth.php" method="post">
       <div class="form-container">
         <ul class="fields">
           <li class="fields__component">
-            <label for="name">Enter your name</label>
+            <label for="login">Enter your login</label>
           </li>
           <li class="fields__component">
-            <input class="input" type="text" placeholder="Vanya" id="name" required>
+            <input class="input" type="text" placeholder="Vanya1993" id="login" required>
           </li>
         </ul>
 
@@ -29,7 +29,7 @@
 
     <p class="log-offer">
       If you don't have an account you can
-      <a href="login.php" class="log-offer__link">register</a>
+      <a href="register.php" class="log-offer__link">register</a>
     </p>
   </div>
 </main>
