@@ -59,6 +59,11 @@ body {
 .navlist__item {
   list-style-type: none;
   position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-family: 'Alegreya Sans';
+  font-size: 22px;
   transition: all 0.3s;
 }
 
@@ -66,16 +71,7 @@ body {
   text-shadow: 1px 1px 2px black;
 }
 
-.navlist__link {
-  cursor: pointer;
-  text-decoration: none;
-  color: black;
-  font-family: 'Alegreya Sans';
-  font-size: 22px;
-  
-}
-
-.navlist__link:after {
+.navlist__item:after {
   content: '';
   display: block;
   position: absolute;
@@ -86,19 +82,52 @@ body {
   transition: all 0.3s;
 }
 
-.navlist__link:hover:after, .navlist__link:focus:after {
+.navlist__item:hover:after, .navlist__item:focus:after {
   width: 100%;
 }
 /* header */
 
+/* modal */
+
+.modal-back {
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.829);
+  z-index: 2;
+}
+
+.modal-back_active {
+  display: flex;
+}
+
+.modal-window {
+  width: 22rem;
+  height: 19rem;
+  margin-bottom: 2rem;
+  background-color: white;
+  box-shadow: 3px 5px 20px white;
+  position: relative;
+}
+
+/* modal */
+
 /* main */
+.main {
+  position: relative;
+}
+
 .main-container {
   width: 100%;
   margin-top: 2rem;
+  padding-left: 2rem;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
   position: relative;
   z-index: 1;
 }
@@ -173,47 +202,3 @@ body {
   right: 1rem;
 }
 /* main */
-
-/* log in, register forms */
-.reg-window {
-  font-size: 1.5rem;
-}
-
-.fields {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.fields__component {
-  list-style-type: none;
-}
-
-.input {
-  font-size: 1.3rem;
-}
-
-.submit-btn {
-  padding: 0.6rem 1rem;
-  font-size: 1.3rem;
-  border: 1px solid black;
-  border-radius: 1rem;
-  background-color: rgb(184, 209, 255);
-  transition: all 0.2s;
-}
-
-.log-offer__link {
-  padding: 0.5rem;
-  text-decoration: none;
-  border: 1px solid black;
-  border-radius: 0.8rem;
-  color: black;
-  background-color: rgb(184, 209, 255);
-  transition: all 0.2s;
-}
-
-.submit-btn:hover, .submit-btn:active, .log-offer__link:hover, .log-offer__link:active {
-  transform: scale(1.05);
-  background-color: rgb(192, 214, 255);
-}
-/* log in, register forms */

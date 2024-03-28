@@ -1,0 +1,63 @@
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Alegreya Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./font/alegreya-sans-v24-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+.form {
+  padding: 2.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem; 
+}
+
+.exit-button {
+  width: 1.9rem;
+  height: 1.9rem;
+  background-image: url(./img/cross.svg);
+  background-size: cover;
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.exit-button:hover {
+  transform: scale(1.2);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field {
+  font-family: 'Alegreya Sans';
+  font-size: 1.4rem;
+}
+
+.input-style {
+  padding: 0.2rem 1rem 0.2rem;
+  border-radius: 5rem;
+  border: 1px solid black;
+}
+
+.button {
+  width: 7rem;
+  height: 3rem;
+  font-family: 'Alegreya Sans';
+  font-size: 1.4rem;
+  cursor: pointer;
+  background-color: rgba(124, 39, 202, 0.623);
+  border: none;
+  border-radius: 1.2rem;
+  transition: 0.2s;
+}
+
+.button:hover {
+  transform: scale(1.08);
+}
