@@ -1,9 +1,27 @@
 (function() {
-  const logBtn = document.querySelector('.log-in');
+  // register window
   const regBtn = document.querySelector('.register');
   const modalWindowBack = document.querySelector('.modal-back');
-  const modalWindow = document.querySelector('.modal-window')
-  const regWindow = () => {
+  const modalWindow = document.querySelector('.modal-window');
+  const regObj = {
+    NameLabel1: 'Create your login',
+    NameLabel2: 'Create your password',
+    ButtonClass: 'register',
+    ButtonTextContent: 'Register',
+    offerTextContent: 'If you already have an account, you can log in',
+    link: 'login-link',
+  };
+
+  logObj = {
+    NameLabel1: 'Enter your login',
+    NameLabel2: 'Enter your password',
+    ButtonClass: 'login',
+    ButtonTextContent: 'Login',
+    offerTextContent: 'If you do not an account yet, you can register',
+    link: 'register-link',
+  };
+
+  const regWindow = (obj) => {
     modalWindowBack.classList.add('modal-back_active');
     const regForm = document.createElement('form');
     regForm.classList.add('form');
@@ -25,7 +43,7 @@
     const labelLogin = document.createElement('label');
     labelLogin.classList.add('field');
     labelLogin.setAttribute('for', 'login');
-    labelLogin.textContent = 'Enter your login';
+    labelLogin.textContent = obj.NameLabel1;
     loginContainer.appendChild(labelLogin);
 
     const inputLogin = document.createElement('input');
@@ -40,7 +58,7 @@
     const labelLogPas = document.createElement('label');
     labelLogPas.classList.add('field');
     labelLogPas.setAttribute('for', 'password');
-    labelLogPas.textContent = 'Enter your password';
+    labelLogPas.textContent = obj.NameLabel2;
     passwordContainer.appendChild(labelLogPas);
 
     const inputLogPas = document.createElement('input');
@@ -54,19 +72,61 @@
 
     const submitBtn = document.createElement('button');
     submitBtn.classList.add('button');
-    submitBtn.setAttribute('type', 'submit');
-    submitBtn.textContent = 'Log in';
+    submitBtn.classList.add(obj.ButtonClass);
+    submitBtn.setAttribute('type', 'button');
+    submitBtn.textContent = obj.ButtonTextContent;
     regForm.appendChild(submitBtn);
 
+    const logBlock = document.createElement('div');
+    logBlock.classList.add('login-block');
+    regForm.appendChild(logBlock);
+
+    const logOffer = document.createElement('p');
+    logOffer.classList.add('login-offer');
+    logOffer.textContent = obj.offerTextContent;
+    logBlock.appendChild(logOffer);
+
+    const logMenuBtn = document.createElement('button');
+    logMenuBtn.classList.add(obj.link);
+    logMenuBtn.classList.add('button');
+    logMenuBtn.setAttribute('type', 'button');
+    logMenuBtn.textContent = '-->';
+    logBlock.appendChild(logMenuBtn);
+
     // close of reg window
-    exitBtn.addEventListener('click', () => {
+    const closeWindow = () => {
       modalWindowBack.classList.remove('modal-back_active');
       regForm.remove();
+    }
+    exitBtn.addEventListener('click', closeWindow);
+    modalWindowBack.addEventListener('click', (event) => {
+      if (event.target === modalWindowBack) {
+        closeWindow();
+      }
+    });
+
+    const transition = document.querySelectorAll('.button');
+
+    transition.forEach((item) => {
+      if (item.classList.contains('login-link')) {
+        item.addEventListener('click', () => {
+          regForm.remove();
+          regWindow(logObj);
+        });
+      }
+      if (item.classList.contains('register-link')) {
+        item.addEventListener('click', () => {
+          regForm.remove();
+          regWindow(regObj);
+        });
+      }
     });
   }
-  // logBtn.addEventListener('click', );
-  regBtn.addEventListener('click', regWindow);
-  
 
-  
+  regBtn.addEventListener('click', () => regWindow(regObj));
+
+  // login window
+  const logBtn = document.querySelector('.log-in');
+
+  logBtn.addEventListener('click', () => regWindow(logObj));
 })();
