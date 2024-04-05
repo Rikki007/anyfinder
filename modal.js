@@ -1,12 +1,11 @@
 (function() {
-  // register window
-  const regBtn = document.querySelector('.register');
+  // window
+  const regBtn = document.querySelector('.regist');
   const modalWindowBack = document.querySelector('.modal-back');
   const modalWindow = document.querySelector('.modal-window');
   const regObj = {
     NameLabel1: 'Create your login',
     NameLabel2: 'Create your password',
-    ButtonClass: 'register',
     ButtonTextContent: 'Register',
     offerTextContent: 'If you already have an account, you can log in',
     link: 'login-link',
@@ -15,7 +14,6 @@
   logObj = {
     NameLabel1: 'Enter your login',
     NameLabel2: 'Enter your password',
-    ButtonClass: 'login',
     ButtonTextContent: 'Login',
     offerTextContent: 'If you do not an account yet, you can register',
     link: 'register-link',
@@ -72,7 +70,7 @@
 
     const submitBtn = document.createElement('button');
     submitBtn.classList.add('button');
-    submitBtn.classList.add(obj.ButtonClass);
+    submitBtn.classList.add('submit-button');
     submitBtn.setAttribute('type', 'button');
     submitBtn.textContent = obj.ButtonTextContent;
     regForm.appendChild(submitBtn);
@@ -93,7 +91,7 @@
     logMenuBtn.textContent = '-->';
     logBlock.appendChild(logMenuBtn);
 
-    // close of reg window
+    // close of window
     const closeWindow = () => {
       modalWindowBack.classList.remove('modal-back_active');
       regForm.remove();
@@ -121,6 +119,36 @@
         });
       }
     });
+
+    // submit data with help of ajax
+
+    submitBtn.addEventListener('click', () => {
+      const login = document.getElementById('login');
+      const password = document.getElementById('password');
+      let loginVal = login.value;
+      let passwordVal = password.value;
+      
+      if (loginVal.length <= 3) {
+        alert('Login is too short. It must be longer than 3 characters.');
+      }
+      if (passwordVal.length <= 3) {
+        alert('Password is too short. It must be longer than 3 characters.');
+      } else if (loginVal.length > 3 && passwordVal.length > 3) {
+
+        if (submitBtn.textContent === 'Register') {
+          const typeOfAction = 'r';
+          ajax(loginVal, passwordVal, typeOfAction);
+          closeWindow();
+          entrance();
+        }
+        if (submitBtn.textContent === 'Login') {
+          const typeOfAction = 'l';
+          ajax(loginVal, passwordVal, typeOfAction);
+        }
+
+      }
+    });
+    
   }
 
   regBtn.addEventListener('click', () => regWindow(regObj));

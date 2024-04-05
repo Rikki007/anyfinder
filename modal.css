@@ -46,6 +46,10 @@
   border: 1px solid black;
 }
 
+.input-style_falsy {
+  border: 1px solid red;
+}
+
 .button {
   width: 7rem;
   height: 3rem;

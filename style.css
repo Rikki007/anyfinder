@@ -85,6 +85,10 @@ body {
 .navlist__item:hover:after, .navlist__item:focus:after {
   width: 100%;
 }
+
+.navlist__item_disabled {
+  display: none;
+}
 /* header */
 
 /* modal */
