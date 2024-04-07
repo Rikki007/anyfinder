@@ -68,6 +68,27 @@
     inputLogPas.setAttribute('required', '');
     passwordContainer.appendChild(inputLogPas);
 
+    const avatarContainer = document.createElement('div');
+    avatarContainer.classList.add('avatar-container');
+    regForm.appendChild(avatarContainer);
+
+    const avaDes = document.createElement('p');
+    avaDes.classList.add('field');
+    avaDes.textContent = 'Choose your avatar';
+    avatarContainer.appendChild(avaDes);
+
+    const avaWrap = document.createElement('div');
+    avaWrap.classList.add('avatar-wrapper');
+    avatarContainer.appendChild(avaWrap);
+
+    for (let i = 0; i < 8; i += 1 ) {
+      const block = document.createElement('div');
+      block.classList.add('block-item');
+      block.classList.add(`block${i}`);
+      avaWrap.appendChild(block);
+    }
+
+
     const submitBtn = document.createElement('button');
     submitBtn.classList.add('button');
     submitBtn.classList.add('submit-button');
@@ -120,6 +141,20 @@
       }
     });
 
+    // choose of avatar logic
+
+    let avatarNum;
+
+    const avatarBlocks = document.querySelectorAll('.block-item');
+    avatarBlocks.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        avatarBlocks.forEach((block) => block.classList.remove('block-item_activ'));
+        item.classList.add('block-item_activ');
+        avatarNum = index;
+      });
+    });
+
+
     // submit data with help of ajax
 
     submitBtn.addEventListener('click', () => {
@@ -127,9 +162,11 @@
       const password = document.getElementById('password');
       let loginVal = login.value;
       let passwordVal = password.value;
-      
       if (loginVal.length <= 3) {
         alert('Login is too short. It must be longer than 3 characters.');
+      }
+      if (avatarNum === undefined) {
+        alert('Choose the avatar');
       }
       if (passwordVal.length <= 3) {
         alert('Password is too short. It must be longer than 3 characters.');
@@ -137,17 +174,18 @@
 
         if (submitBtn.textContent === 'Register') {
           const typeOfAction = 'r';
-          ajax(loginVal, passwordVal, typeOfAction);
+          ajax(loginVal, passwordVal, typeOfAction, avatarNum);
           closeWindow();
           entrance();
         }
         if (submitBtn.textContent === 'Login') {
           const typeOfAction = 'l';
-          ajax(loginVal, passwordVal, typeOfAction);
+          ajax(loginVal, passwordVal, typeOfAction, avatarNum);
         }
 
       }
     });
+    entrance();
     
   }
 

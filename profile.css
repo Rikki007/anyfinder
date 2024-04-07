@@ -1,0 +1,43 @@
+h2 {
+  margin: 0;
+}
+
+.profile-block {
+  display: flex;
+  gap: 3rem;
+}
+
+.profile-block__name {
+  font-family: 'Alegreya Sans';
+  font-size: 2rem;
+}
+
+.profile-block__avatar {
+  width: 2rem;
+  height: 2rem;
+}
+
+.my-ads {
+  display: block;
+  width: 10rem;
+  height: 2rem;
+  background-color: azure;
+  box-shadow: 2px 3px 3px black;
+  border: 1px solid black;
+}
+
+.create-advertisement {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-image: url(./img/advertisement.svg);
+  background-size: contain;
+  background-color: azure;
+  box-shadow: 2px 3px 3px black;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.create-advertisement:hover {
+  transform: scale(1.1);
+}

@@ -27,6 +27,10 @@
   box-sizing: border-box;
 }
 
+p {
+  margin: 0;
+}
+
 body {
   font-family: 'Alegreya Sans';
   font-size: 18px;
@@ -112,7 +116,10 @@ body {
 
 .modal-window {
   width: 25rem;
-  height: 26rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2.7rem;
   margin-bottom: 2rem;
   background-color: white;
   box-shadow: 3px 5px 20px white;

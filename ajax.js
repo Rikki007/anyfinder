@@ -1,8 +1,9 @@
-function ajax(login, password, typeOfAction) {
+function ajax(login, password, typeOfAction, avatarNum) {
   const formData = {
     login: login,
     password: password,
     action: typeOfAction,
+    avatarNum: avatarNum,
   };
   const request = new XMLHttpRequest();
   request.open('POST', 'checkAuth.php', true);
@@ -12,7 +13,7 @@ function ajax(login, password, typeOfAction) {
       if (request.responseText == "New record created successfully") {
         entrance();
       } else if (request.responseText.includes('Duplicate')) {
-        alert(' user with this login already exist try new login');
+        alert(' user with this login already exist try another login');
       }
     } else {
       console.error('request faild: ' + request.status);

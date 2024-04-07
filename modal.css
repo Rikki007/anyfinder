@@ -1,13 +1,4 @@
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Alegreya Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./font/alegreya-sans-v24-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
 .form {
-  padding: 2.7rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem; 
@@ -48,6 +39,78 @@
 
 .input-style_falsy {
   border: 1px solid red;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.avatar-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 3rem);
+  grid-template-rows: repeat(2, 3.2rem);
+  row-gap: 0.3rem;
+  column-gap: 1rem;
+  
+}
+
+.block-item {
+  width: 3.1rem;
+  height: 3rem;
+  border: 1px solid black;
+  transition: all 0.3s;
+}
+
+.block-item:hover {
+  transform: scale(1.1);
+}
+
+.block0 {
+  background-image: url(./img/avatars/female-1.svg);
+  background-size: cover;
+}
+
+.block1 {
+  background-image: url(./img/avatars/female-2.svg);
+  background-size: cover;
+}
+
+.block2 {
+  background-image: url(./img/avatars/female-3.svg);
+  background-size: cover;
+}
+
+.block3 {
+  background-image: url(./img/avatars/female-4.svg);
+  background-size: cover;
+}
+
+.block4 {
+  background-image: url(./img/avatars/male-1.svg);
+  background-size: cover;
+}
+
+.block5 {
+  background-image: url(./img/avatars/male-2.svg);
+  background-size: cover;
+}
+
+.block6 {
+  background-image: url(./img/avatars/male-3.svg);
+  background-size: cover;
+}
+
+.block7 {
+  background-image: url(./img/avatars/male-4.svg);
+  background-size: cover;
+}
+
+.block-item_activ {
+  transform: scale(1.1);
+  border: 2px solid green;
+  box-shadow: 2px 2px 2px green;
 }
 
 .button {
