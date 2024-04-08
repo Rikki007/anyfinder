@@ -32,12 +32,12 @@ function entrance() {
       
       const profName = document.createElement('h2');
       profName.classList.add('profile-block__name');
-      profName.textContent = cookieValues[0];
+      profName.textContent = cookieValues[0].split('%20').join(' ');
       profBlock.appendChild(profName);
 
       const profAvatar = document.createElement('div');
       profAvatar.classList.add('profile-block__avatar');
-      profAvatar.classList.add(`block${cookieValues[1]}`);
+      profAvatar.classList.add(`block-${cookieValues[1]}`);
       profBlock.appendChild(profAvatar);
 
       const myAds = document.createElement('button');
@@ -56,7 +56,7 @@ function entrance() {
     logOut.addEventListener('click', () => {
       document.cookie = "username=; max-age=-1; path=/";
       document.cookie = "avatar=; max-age=-1; path=/";
-      console.log(document.cookie);
+      document.cookie = "admin=; max-age=-1; path=/";
       logOut.remove();
       userProfile.remove();
 

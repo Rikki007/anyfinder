@@ -67,43 +67,48 @@
   transform: scale(1.1);
 }
 
-.block0 {
+.block-0 {
   background-image: url(./img/avatars/female-1.svg);
   background-size: cover;
 }
 
-.block1 {
+.block-1 {
   background-image: url(./img/avatars/female-2.svg);
   background-size: cover;
 }
 
-.block2 {
+.block-2 {
   background-image: url(./img/avatars/female-3.svg);
   background-size: cover;
 }
 
-.block3 {
+.block-3 {
   background-image: url(./img/avatars/female-4.svg);
   background-size: cover;
 }
 
-.block4 {
+.block-4 {
   background-image: url(./img/avatars/male-1.svg);
   background-size: cover;
 }
 
-.block5 {
+.block-5 {
   background-image: url(./img/avatars/male-2.svg);
   background-size: cover;
 }
 
-.block6 {
+.block-6 {
   background-image: url(./img/avatars/male-3.svg);
   background-size: cover;
 }
 
-.block7 {
+.block-7 {
   background-image: url(./img/avatars/male-4.svg);
+  background-size: cover;
+}
+
+.block-admin {
+  background-image: url(./img/avatars/admin.svg);
   background-size: cover;
 }
 

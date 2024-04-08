@@ -10,10 +10,12 @@ function ajax(login, password, typeOfAction, avatarNum) {
   request.setRequestHeader('Content-Type', 'application/json');
   request.addEventListener('load', () => {
     if (request.status >= 200 && request.status < 300) {
-      if (request.responseText == "New record created successfully") {
+      if (request.responseText == "New record created successfully" || request.responseText == "User is founded") {
         entrance();
       } else if (request.responseText.includes('Duplicate')) {
-        alert(' user with this login already exist try another login');
+        alert(' user with this login already exist try another login.');
+      } else if (request.responseText === 'user not found') {
+        alert('Wrong login or password.');
       }
     } else {
       console.error('request faild: ' + request.status);
