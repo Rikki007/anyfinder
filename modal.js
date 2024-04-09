@@ -26,10 +26,6 @@
     regForm.action = '#';
     modalWindow.appendChild(regForm);
 
-    const exitBtn = document.createElement('div');
-    exitBtn.classList.add('exit-button');
-    regForm.appendChild(exitBtn);
-
     const loginContainer = document.createElement('div');
     loginContainer.classList.add('fields');
     regForm.appendChild(loginContainer);
@@ -89,8 +85,6 @@
         avaWrap.appendChild(block);
       }
     }
-    
-
 
     const submitBtn = document.createElement('button');
     submitBtn.classList.add('button');
@@ -117,9 +111,20 @@
 
     // close of window
     const closeWindow = () => {
+      const profileWrapper = document.querySelector('.profile-wrapper');
+      const adsForm = document.querySelector('.ads-form');
       modalWindowBack.classList.remove('modal-back_active');
       regForm.remove();
+      if (profileWrapper) {
+        profileWrapper.remove();
+      }
+      if (adsForm) {
+        adsForm.remove();
+      }
     }
+
+    exitBtn = document.querySelector('.exit-button');
+
     exitBtn.addEventListener('click', closeWindow);
     modalWindowBack.addEventListener('click', (event) => {
       if (event.target === modalWindowBack) {

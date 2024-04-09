@@ -126,6 +126,22 @@ body {
   position: relative;
 }
 
+.exit-button {
+  width: 1.9rem;
+  height: 1.9rem;
+  background-image: url(./img/cross.svg);
+  background-size: cover;
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.exit-button:hover {
+  transform: scale(1.2);
+}
+
 /* modal */
 
 /* main */

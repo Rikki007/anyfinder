@@ -26,29 +26,51 @@ function entrance() {
       modalBack.classList.add('modal-back_active');
       cookieValues = document.cookie.split(';').map(item => item.split('=')[1]);
 
+      const profileWrapper = document.createElement('div');
+      profileWrapper.classList.add('profile-wrapper');
+      modalWindow.appendChild(profileWrapper);
+
       const profBlock = document.createElement('div');
       profBlock.classList.add('profile-block');
-      modalWindow.appendChild(profBlock);
-      
-      const profName = document.createElement('h2');
-      profName.classList.add('profile-block__name');
-      profName.textContent = cookieValues[0].split('%20').join(' ');
-      profBlock.appendChild(profName);
+      profileWrapper.appendChild(profBlock);
 
       const profAvatar = document.createElement('div');
       profAvatar.classList.add('profile-block__avatar');
       profAvatar.classList.add(`block-${cookieValues[1]}`);
       profBlock.appendChild(profAvatar);
 
+      const profName = document.createElement('h2');
+      profName.classList.add('profile-block__name');
+      profName.textContent = cookieValues[0].split('%20').join(' ');
+      profBlock.appendChild(profName);
+
       const myAds = document.createElement('button');
       myAds.setAttribute('type', 'button');
       myAds.classList.add('button');
       myAds.textContent = 'My abs';
-      modalWindow.appendChild(myAds);
+      profileWrapper.appendChild(myAds);
 
       const createAdvertisement = document.createElement('div');
       createAdvertisement.classList.add('create-advertisement');
-      modalWindow.appendChild(createAdvertisement);
+      profileWrapper.appendChild(createAdvertisement);
+
+      const adsDesc = document.createElement('p');
+      adsDesc.textContent = 'Create an advertisement -->';
+      adsDesc.classList.add('field');
+      createAdvertisement.appendChild(adsDesc);
+
+      const adsImg = document.createElement('img');
+      adsImg.src = './img/advertisement.svg';
+      adsImg.alt = 'icon';
+      adsImg.classList.add('advertisement-img');
+      createAdvertisement.appendChild(adsImg);
+
+      // creating ads
+      adsImg.addEventListener('click', () => {
+        profileWrapper.remove();
+        adsFormCreate(modalWindow);
+      });
+
     });
 
     // delete cookies and elements of navbar when the client is log out

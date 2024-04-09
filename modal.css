@@ -4,22 +4,6 @@
   gap: 1.5rem; 
 }
 
-.exit-button {
-  width: 1.9rem;
-  height: 1.9rem;
-  background-image: url(./img/cross.svg);
-  background-size: cover;
-  position: absolute;
-  top: 0.7rem;
-  right: 0.7rem;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.exit-button:hover {
-  transform: scale(1.2);
-}
-
 .fields {
   display: flex;
   flex-direction: column;
@@ -39,6 +23,16 @@
 
 .input-style_falsy {
   border: 1px solid red;
+}
+
+.description-input {
+  width: 100%;
+  height: 7rem;
+  font-family: 'Alegreya Sans';
+  font-size: 1rem;
+  padding: 0.2rem 1rem 0.2rem;
+  border-radius: 1rem;
+  border: 1px solid black;
 }
 
 .avatar-container {
@@ -70,46 +64,55 @@
 .block-0 {
   background-image: url(./img/avatars/female-1.svg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .block-1 {
   background-image: url(./img/avatars/female-2.svg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .block-2 {
   background-image: url(./img/avatars/female-3.svg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .block-3 {
   background-image: url(./img/avatars/female-4.svg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .block-4 {
   background-image: url(./img/avatars/male-1.svg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .block-5 {
   background-image: url(./img/avatars/male-2.svg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .block-6 {
   background-image: url(./img/avatars/male-3.svg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .block-7 {
   background-image: url(./img/avatars/male-4.svg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .block-admin {
   background-image: url(./img/avatars/admin.svg);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .block-item_activ {
