@@ -17,6 +17,7 @@
           setcookie("username", $login, time() + 3600, "/");
           setcookie("avatar", $avatar, time() + 3600,"/");
           setcookie("admin", 0, time() + 3600,"/");
+          setcookie("moderator", 0, time() + 3600,"/");
       } else {
           echo $mysql->error;
       }
@@ -33,6 +34,7 @@
     setcookie("username", $user['login'], time() + 3600, "/");
     setcookie("avatar", $user['avatar'], time() + 3600,"/");
     setcookie("admin", $user['admin'], time() + 3600,"/");
+    setcookie("moderator", $user['moderator'], time() + 3600,"/");
 
   }
   $mysql->close();

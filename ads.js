@@ -17,11 +17,11 @@ function adsFormCreate(container) {
   fieldset.appendChild(purchase);
 
   const purchaseInput = document.createElement('input');
-  purchaseInput.setAttribute('type', 'radio');
   purchaseInput.setAttribute('id', 'purchase');
+  purchaseInput.setAttribute('type', 'radio');
   purchaseInput.setAttribute('value', 'purchase');
   purchaseInput.setAttribute('name', 'operation');
-  purchaseInput.setAttribute('checked', 'checked');
+  purchaseInput.checked = true;
   purchase.appendChild(purchaseInput);
 
   const purchaseLabel = document.createElement('label');
@@ -99,4 +99,9 @@ function adsFormCreate(container) {
   submitBtn.setAttribute('type', 'button');
   submitBtn.textContent = 'Create';
   adsForm.appendChild(submitBtn);
+
+  submitBtn.addEventListener('click', () => {
+    const login = document.cookie.split(';')[0].split('=')[1];
+    ajaxAds(login, purchaseInput, saleInput, kindOfProductInput, descriptionInput, priceOfProductInput);
+  });
 }

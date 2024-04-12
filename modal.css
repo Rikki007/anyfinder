@@ -115,6 +115,12 @@
   background-repeat: no-repeat;
 }
 
+.block-moderator {
+  background-image: url(./img/avatars/moderator.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .block-item_activ {
   transform: scale(1.1);
   border: 2px solid green;

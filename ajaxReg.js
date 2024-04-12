@@ -1,4 +1,4 @@
-function ajax(login, password, typeOfAction, avatarNum) {
+function ajaxReg(login, password, typeOfAction, avatarNum) {
   const formData = {
     login: login,
     password: password,

@@ -79,6 +79,7 @@ function entrance() {
       document.cookie = "username=; max-age=-1; path=/";
       document.cookie = "avatar=; max-age=-1; path=/";
       document.cookie = "admin=; max-age=-1; path=/";
+      document.cookie = "moderator=; max-age=-1; path=/";
       logOut.remove();
       userProfile.remove();
 

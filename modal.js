@@ -182,14 +182,14 @@
 
         if (submitBtn.textContent === 'Register') {
           const typeOfAction = 'r';
-          ajax(loginVal, passwordVal, typeOfAction, avatarNum);
+          ajaxReg(loginVal, passwordVal, typeOfAction, avatarNum);
           closeWindow();
           entrance();
         }
         if (submitBtn.textContent === 'Login') {
           const typeOfAction = 'l';
           avatarNum = 'default';
-          ajax(loginVal, passwordVal, typeOfAction, avatarNum);
+          ajaxReg(loginVal, passwordVal, typeOfAction, avatarNum);
           closeWindow();
           entrance();
         }
