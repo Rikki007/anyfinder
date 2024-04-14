@@ -65,10 +65,19 @@ function entrance() {
       adsImg.classList.add('advertisement-img');
       createAdvertisement.appendChild(adsImg);
 
+      myAds.addEventListener('click', () => {
+        const login = document.cookie.split(';')[0].split('=')[1];
+        modalBack.classList.remove('modal-back_active');
+        profileWrapper.remove();
+        ajaxShowMyAds(login);
+      });
+
+      closeWindow(profileWrapper);
+
       // creating ads
       adsImg.addEventListener('click', () => {
         profileWrapper.remove();
-        adsFormCreate(modalWindow);
+        adsFormCreate(modalWindow, modalBack);
       });
 
     });

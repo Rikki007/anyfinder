@@ -6,7 +6,7 @@ function ajaxReg(login, password, typeOfAction, avatarNum) {
     avatarNum: avatarNum,
   };
   const request = new XMLHttpRequest();
-  request.open('POST', 'checkAuth.php', true);
+  request.open('POST', './php/checkAuth.php', true);
   request.setRequestHeader('Content-Type', 'application/json');
   request.addEventListener('load', () => {
     if (request.status >= 200 && request.status < 300) {

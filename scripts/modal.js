@@ -108,29 +108,8 @@
     logMenuBtn.setAttribute('type', 'button');
     logMenuBtn.textContent = '-->';
     logBlock.appendChild(logMenuBtn);
-
-    // close of window
-    const closeWindow = () => {
-      const profileWrapper = document.querySelector('.profile-wrapper');
-      const adsForm = document.querySelector('.ads-form');
-      modalWindowBack.classList.remove('modal-back_active');
-      regForm.remove();
-      if (profileWrapper) {
-        profileWrapper.remove();
-      }
-      if (adsForm) {
-        adsForm.remove();
-      }
-    }
-
-    exitBtn = document.querySelector('.exit-button');
-
-    exitBtn.addEventListener('click', closeWindow);
-    modalWindowBack.addEventListener('click', (event) => {
-      if (event.target === modalWindowBack) {
-        closeWindow();
-      }
-    });
+    // close of registration/login window
+    closeWindow(regForm);
 
     const transition = document.querySelectorAll('.button');
 
@@ -183,19 +162,21 @@
         if (submitBtn.textContent === 'Register') {
           const typeOfAction = 'r';
           ajaxReg(loginVal, passwordVal, typeOfAction, avatarNum);
-          closeWindow();
+          modalWindowBack.classList.remove('modal-back_active');
+          regForm.remove();
           entrance();
         }
         if (submitBtn.textContent === 'Login') {
           const typeOfAction = 'l';
           avatarNum = 'default';
           ajaxReg(loginVal, passwordVal, typeOfAction, avatarNum);
-          closeWindow();
+          modalWindowBack.classList.remove('modal-back_active');
+          regForm.remove();
           entrance();
         }
-
       }
     });
+    // function which work if inter in your account
     entrance();
     
   }

@@ -4,7 +4,7 @@
   font-family: 'Alegreya Sans';
   font-style: normal;
   font-weight: 400;
-  src: url('./font/alegreya-sans-v24-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../font/alegreya-sans-v24-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* alegreya-sans-italic - latin */
 @font-face {
@@ -12,7 +12,7 @@
   font-family: 'Alegreya Sans';
   font-style: italic;
   font-weight: 400;
-  src: url('./font/alegreya-sans-v24-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../font/alegreya-sans-v24-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 /* alegreya-sans-700 - latin */
 @font-face {
@@ -20,7 +20,7 @@
   font-family: 'Alegreya Sans';
   font-style: normal;
   font-weight: 700;
-  src: url('./font/alegreya-sans-v24-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('../font/alegreya-sans-v24-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 * {
@@ -129,7 +129,7 @@ body {
 .exit-button {
   width: 1.9rem;
   height: 1.9rem;
-  background-image: url(./img/cross.svg);
+  background-image: url(../img/cross.svg);
   background-size: cover;
   position: absolute;
   top: 0.7rem;
@@ -147,14 +147,15 @@ body {
 /* main */
 .main {
   position: relative;
+  min-height: 90rem;
 }
 
 .main-container {
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 3rem;
   padding-left: 2rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
   z-index: 1;
 }
@@ -202,8 +203,40 @@ body {
 
 .date {
   position: absolute;
-  bottom: -1rem;
+  bottom: 0;
   right: 0.5rem;
+}
+
+.ads-status {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  top: -1.4rem;
+  left: 1rem;
+}
+
+.ads-status__moderation {
+  width: 1.3rem;
+  height: 1.3rem;
+  background-image: url(../img/status/moderation.svg);
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+
+.ads-status__approved {
+  width: 1.3rem;
+  height: 1.3rem;
+  background-image: url(../img/status/approved.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.ads-status__rejected {
+  width: 1.3rem;
+  height: 1.3rem;
+  background-image: url(../img/status/rejected.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .extended-description {

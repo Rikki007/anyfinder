@@ -18,11 +18,16 @@ function ajaxAds(login, purchaseRadio, saleRadio, product, description, pricePro
   }
 
   const request = new XMLHttpRequest;
-  request.open('POST', 'adsproc.php', true);
+  request.open('POST', './php/adsproc.php', true);
   request.setRequestHeader('Content-Type', 'application/json');
   request.addEventListener('load', () => {
     if (request.status >= 200 && request.status < 300) {
-
+      if (request.responseText === 'Advertisement is created successfully') {
+        alert('Your ad has been sent to the server and is awaiting moderation.');
+      }
+      if (request.responseText === 'Data too long for column \'price\' at row 1') {
+        alert('Data in row price is too long it must be less then eight characters.');
+      }
     } else {
       console.error('request faild:' + request.status);
     }

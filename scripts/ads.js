@@ -1,4 +1,4 @@
-function adsFormCreate(container) {
+function adsFormCreate(container, backContainer) {
   const adsForm = document.createElement('form');
   adsForm.setAttribute('action', '#');
   adsForm.classList.add('form');
@@ -100,8 +100,12 @@ function adsFormCreate(container) {
   submitBtn.textContent = 'Create';
   adsForm.appendChild(submitBtn);
 
+  closeWindow(adsForm);
+
   submitBtn.addEventListener('click', () => {
     const login = document.cookie.split(';')[0].split('=')[1];
     ajaxAds(login, purchaseInput, saleInput, kindOfProductInput, descriptionInput, priceOfProductInput);
+    adsForm.remove();
+    backContainer.classList.remove('modal-back_active');
   });
 }

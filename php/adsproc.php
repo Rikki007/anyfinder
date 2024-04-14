@@ -16,7 +16,6 @@
   $query = "INSERT INTO `ads` (`login`, `type`, `product`, `description`, `price`) VALUES ('$login', '$type', '$product', '$description', '$price')";
   if($mysql->query($query)) {
     echo "Advertisement is created successfully";
-    setcookie("adsData","$dataStrignify", time() + 3600,"/");
   }else{
     echo $mysql->error;
   }
