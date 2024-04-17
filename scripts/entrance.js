@@ -66,9 +66,13 @@ function entrance() {
       createAdvertisement.appendChild(adsImg);
 
       myAds.addEventListener('click', () => {
-        const login = document.cookie.split(';')[0].split('=')[1];
+        const login = document.cookie.split(';')[0].split('=')[1];        
         modalBack.classList.remove('modal-back_active');
         profileWrapper.remove();
+        const adsWrapper = document.querySelector('.ads');
+        while (adsWrapper.firstChild) {
+          adsWrapper.removeChild(adsWrapper.firstChild);
+        }
         ajaxShowMyAds(login);
       });
 

@@ -6,8 +6,7 @@ function ajaxShowMyAds(login) {
     if (request.status >= 200 && request.status < 300) {
       const arrayAds = JSON.parse(request.response);
       for (let i = 0; i < arrayAds.length; i += 1) {
-        console.log(arrayAds[i])
-        lookForAds(arrayAds[i]);
+        myAds(arrayAds[i]);
       }
     }else{
       console.error('request faild: ' + request.status);

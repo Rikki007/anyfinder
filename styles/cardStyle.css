@@ -1,0 +1,157 @@
+.card {
+  width: 250px;
+  height: 350px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 0 5px black;
+}
+
+.img-container {
+  width: 234px;
+  height: 200px;
+  background-color: rgb(255, 254, 254);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.card:hover > .img-container {
+  transform: scale(1.04);
+}
+
+.card__img {
+  width: 95%;
+}
+
+.date {
+  position: absolute;
+  bottom: 0;
+  right: 0.5rem;
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ads-status {
+  display: flex;
+  gap: 1rem;
+  position: absolute;
+  top: -1.4rem;
+  left: 1rem;
+}
+
+.ads-status__moderation {
+  width: 1.3rem;
+  height: 1.3rem;
+  background-image: url(../img/status/moderation.svg);
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+
+.ads-status__approved {
+  width: 1.3rem;
+  height: 1.3rem;
+  background-image: url(../img/status/approved.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.ads-status__rejected {
+  width: 1.3rem;
+  height: 1.3rem;
+  background-image: url(../img/status/rejected.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* card extended */
+
+.card__extended {
+  height: 600px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.description__extended {
+  width: 110%;
+  padding: 1rem;
+  height: 20rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+.date__extended {
+  position: absolute;
+  bottom: -2rem;
+  right: -1rem;
+}
+
+.dot_menu {
+  width: 2.2rem;
+  height: 2.2rem;
+  background-image: url(../img/menu.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: -2.2rem;
+  left: -2.2rem;
+  transition: 0.3s;
+}
+
+.dot_menu:hover {
+  transform: scale(1.2);
+}
+
+.menu-wrapper {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-image: url(../img/menu-circle.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  border-radius: 50%;
+  top: -2.7rem;
+  left: -2.9rem;
+}
+
+.delete-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  background-image: url(../img/menu-trash.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: -1.8rem;
+  left: -1.2rem;
+  cursor: pointer;
+}
+
+.fix-btn {
+  width: 2rem;
+  height: 2rem;
+  background-image: url(../img/menu-fix.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 3.3rem;
+  left: -1.3rem;
+  cursor: pointer;
+}
