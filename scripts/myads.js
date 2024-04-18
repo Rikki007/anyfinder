@@ -135,6 +135,15 @@ function myAds(obj) {
           const operation = 'delete';
           ajaxDeleteFixAds(obj.id, operation);
         });
+
+        fixBtn.addEventListener('click', () => {
+          const operation = 'fix';
+          menuWrapper.remove();
+          adBlock.remove();
+          createForm(modalWindow);
+          ajaxDeleteFixAds(obj.id, operation);
+          // add data from object to createForm function
+        });
       } else {
         menuWrapper.remove();
       }

@@ -16,6 +16,7 @@
       echo $mysql->error;
     }
   }
+  // if($operation == '')
 
   $mysql->close();
   

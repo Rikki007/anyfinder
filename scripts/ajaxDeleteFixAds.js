@@ -13,7 +13,12 @@ function ajaxDeleteFixAds(id, operationType) {
         while (adsWrapper.firstChild) {
           adsWrapper.removeChild(adsWrapper.firstChild);
         }
-        alert('The ad was deleted');
+        const cardForm = document.querySelector('.card__extended');
+        const menuWrapper = document.querySelector('.menu-wrapper');
+        const modalWindowBack = document.querySelector('.modal-back');
+        menuWrapper.remove();
+        cardForm.remove();
+        modalWindowBack.classList.remove('modal-back_active');
         ajaxShowMyAds(document.cookie.split(';')[0].split('=')[1]);
       } else {
         console.error('request faild: ' + request.status);
