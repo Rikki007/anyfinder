@@ -132,16 +132,78 @@ function myAds(obj) {
         menuWrapper.appendChild(fixBtn);
 
         deleteBtn.addEventListener('click', () => {
-          const operation = 'delete';
-          ajaxDeleteFixAds(obj.id, operation);
+          const adsWrapper = document.querySelector('.ads');
+          const operationOnAd = 'delete';
+          const cardForm = document.querySelector('.card__extended');
+          const menuWrapper = document.querySelector('.menu-wrapper');
+          const modalWindowBack = document.querySelector('.modal-back');
+
+          ajaxDeleteFixAds(obj.id, operationOnAd, '', '', '', '', '', '');
+
+          while (adsWrapper.firstChild) {
+            adsWrapper.removeChild(adsWrapper.firstChild);
+          }
+          
+          menuWrapper.remove();
+          cardForm.remove();
+          modalWindowBack.classList.remove('modal-back_active');
+
+           
+
+          setTimeout(() => {
+            ajaxShowMyAds(obj.login);
+          }, 1000);
         });
 
         fixBtn.addEventListener('click', () => {
-          const operation = 'fix';
+          const operationOnAd = 'fix';
+
           menuWrapper.remove();
           adBlock.remove();
-          createForm(modalWindow);
-          ajaxDeleteFixAds(obj.id, operation);
+
+          addForm();
+
+          const adsForm = document.querySelector('.ads-form');
+          const purchaseInput = document.getElementById('purchase');
+          const saleInput = document.getElementById('sale');
+
+          if (obj.type === 'purchase') {
+            purchaseInput.checked;
+          }
+          if (obj.type === 'sale') {
+            saleInput.checked;
+          }
+          const kindOfProductInput = document.getElementById('product');
+          kindOfProductInput.value = obj.product;
+          const descriptionInput = document.getElementById('description');
+          descriptionInput.value = obj.description;
+          const priceOfProductInput = document.getElementById('price');
+          priceOfProductInput.value = obj.price;
+
+          const submitBtn = document.createElement('button');
+          submitBtn.classList.add('button');
+          submitBtn.classList.add('fix-ads');
+          submitBtn.setAttribute('type', 'button');
+          submitBtn.textContent = 'Fix';
+          adsForm.appendChild(submitBtn);
+
+          submitBtn.addEventListener('click', () => {
+            ajaxDeleteFixAds(obj.id, operationOnAd, obj.login, purchaseInput, saleInput, kindOfProductInput.value, descriptionInput.value, priceOfProductInput.value);
+            
+            const adsWrapper = document.querySelector('.ads');
+            const adsForm = document.querySelector('.ads-form');
+            const modalBack = document.querySelector('.modal-back');
+            adsForm.remove();
+            modalBack.classList.remove('modal-back_active');
+            while (adsWrapper.firstChild) {
+              adsWrapper.removeChild(adsWrapper.firstChild);
+            }
+            setTimeout(() => {
+              ajaxShowMyAds(obj.login);
+            }, 3000);
+          })
+
+          // ajaxDeleteFixAds(obj.id, operationOnAd, obj.login, purchaseInput, saleInput, kindOfProductInput, descriptionInput, priceOfProductInput);
           // add data from object to createForm function
         });
       } else {

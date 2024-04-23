@@ -81,7 +81,7 @@ function entrance() {
       // creating ads
       adsImg.addEventListener('click', () => {
         profileWrapper.remove();
-        adsFormCreate(modalWindow, modalBack);
+        adsFormCreate();
       });
 
     });
