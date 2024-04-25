@@ -121,6 +121,7 @@
 }
 
 .menu-wrapper {
+  display: none;
   width: 3.5rem;
   height: 3.5rem;
   background-image: url(../img/menu-circle.svg);
@@ -130,6 +131,11 @@
   border-radius: 50%;
   top: -2.7rem;
   left: -2.9rem;
+  z-index: 20;
+}
+
+.menu-wrapper_active {
+  display: block;
 }
 
 .delete-btn {

@@ -28,7 +28,8 @@ function myAds(obj) {
   statusDescription.textContent = `status: ${obj.status}`;
   adsStatus.appendChild(statusDescription);
 
-// if user call ads himself, status of moderation well be visible
+  // if user call ads himself, status of moderation well be visible
+  
   if (document.cookie.split(';')[0].split('=')[1] === obj.login || document.cookie.split(';')[0].split('=')[1] === 'moderator' || document.cookie.split(';')[0].split('=')[1] === 'admin') {
     const statusIcon = document.createElement('div');
     if (obj.status === 'moderation') {
@@ -108,107 +109,103 @@ function myAds(obj) {
     price.textContent = obj.price;
     adBlock.appendChild(price);
 
+    // menu for delete/fix ads
+
     const menuButton = document.createElement('div');
     menuButton.classList.add('dot_menu');
     adBlock.appendChild(menuButton);
 
-    let menuWrapper = document.querySelector('.menu-wrapper');
-    let deleteBtn = document.querySelector('.delete-btn');
-    let fixBtn = document.querySelector('.fix-btn');
+    const menuWrapper = document.createElement('div');
+    menuWrapper.classList.add('menu-wrapper');
+    modalWindow.appendChild(menuWrapper);
+
+    const deleteBtn = document.createElement('div');
+    deleteBtn.classList.add('delete-btn');
+    menuWrapper.appendChild(deleteBtn);
+
+    const fixBtn = document.createElement('div');
+    fixBtn.classList.add('fix-btn');
+    menuWrapper.appendChild(fixBtn);
 
     menuButton.addEventListener('click', () => {
-      
-      if (!menuWrapper) {
-        menuWrapper = document.createElement('div');
-        menuWrapper.classList.add('menu-wrapper');
-        modalWindow.appendChild(menuWrapper);
-
-        deleteBtn = document.createElement('div');
-        deleteBtn.classList.add('delete-btn');
-        menuWrapper.appendChild(deleteBtn);
-
-        fixBtn = document.createElement('div');
-        fixBtn.classList.add('fix-btn');
-        menuWrapper.appendChild(fixBtn);
-
-        deleteBtn.addEventListener('click', () => {
-          const adsWrapper = document.querySelector('.ads');
-          const operationOnAd = 'delete';
-          const cardForm = document.querySelector('.card__extended');
-          const menuWrapper = document.querySelector('.menu-wrapper');
-          const modalWindowBack = document.querySelector('.modal-back');
-
-          ajaxDeleteFixAds(obj.id, operationOnAd, '', '', '', '', '', '');
-
-          while (adsWrapper.firstChild) {
-            adsWrapper.removeChild(adsWrapper.firstChild);
-          }
-          
-          menuWrapper.remove();
-          cardForm.remove();
-          modalWindowBack.classList.remove('modal-back_active');
-
-           
-
-          setTimeout(() => {
-            ajaxShowMyAds(obj.login);
-          }, 1000);
-        });
-
-        fixBtn.addEventListener('click', () => {
-          const operationOnAd = 'fix';
-
-          menuWrapper.remove();
-          adBlock.remove();
-
-          addForm();
-
-          const adsForm = document.querySelector('.ads-form');
-          const purchaseInput = document.getElementById('purchase');
-          const saleInput = document.getElementById('sale');
-
-          if (obj.type === 'purchase') {
-            purchaseInput.checked;
-          }
-          if (obj.type === 'sale') {
-            saleInput.checked;
-          }
-          const kindOfProductInput = document.getElementById('product');
-          kindOfProductInput.value = obj.product;
-          const descriptionInput = document.getElementById('description');
-          descriptionInput.value = obj.description;
-          const priceOfProductInput = document.getElementById('price');
-          priceOfProductInput.value = obj.price;
-
-          const submitBtn = document.createElement('button');
-          submitBtn.classList.add('button');
-          submitBtn.classList.add('fix-ads');
-          submitBtn.setAttribute('type', 'button');
-          submitBtn.textContent = 'Fix';
-          adsForm.appendChild(submitBtn);
-
-          submitBtn.addEventListener('click', () => {
-            ajaxDeleteFixAds(obj.id, operationOnAd, obj.login, purchaseInput, saleInput, kindOfProductInput.value, descriptionInput.value, priceOfProductInput.value);
-            
-            const adsWrapper = document.querySelector('.ads');
-            const adsForm = document.querySelector('.ads-form');
-            const modalBack = document.querySelector('.modal-back');
-            adsForm.remove();
-            modalBack.classList.remove('modal-back_active');
-            while (adsWrapper.firstChild) {
-              adsWrapper.removeChild(adsWrapper.firstChild);
-            }
-            setTimeout(() => {
-              ajaxShowMyAds(obj.login);
-            }, 3000);
-          })
-
-          // ajaxDeleteFixAds(obj.id, operationOnAd, obj.login, purchaseInput, saleInput, kindOfProductInput, descriptionInput, priceOfProductInput);
-          // add data from object to createForm function
-        });
+      if (!menuWrapper.classList.contains('menu-wrapper_active')) {
+        menuWrapper.classList.add('menu-wrapper_active');
       } else {
-        menuWrapper.remove();
+        menuWrapper.classList.remove('menu-wrapper_active');
       }
+    });
+
+    deleteBtn.addEventListener('click', () => {
+      const adsWrapper = document.querySelector('.ads');
+      const operationOnAd = 'delete';
+      const cardForm = document.querySelector('.card__extended');
+      const menuWrapper = document.querySelector('.menu-wrapper');
+      const modalWindowBack = document.querySelector('.modal-back');
+
+      ajaxDeleteFixAds(obj.id, operationOnAd, '', '', '', '', '', '');
+
+      while (adsWrapper.firstChild) {
+        adsWrapper.removeChild(adsWrapper.firstChild);
+      }
+      
+      menuWrapper.remove();
+      cardForm.remove();
+      modalWindowBack.classList.remove('modal-back_active');
+
+       
+
+      setTimeout(() => {
+        ajaxShowMyAds(obj.login);
+      }, 1000);
+    });
+
+    fixBtn.addEventListener('click', () => {
+      const operationOnAd = 'fix';
+
+      menuWrapper.remove();
+      adBlock.remove();
+
+      addForm();
+
+      const adsForm = document.querySelector('.ads-form');
+      const purchaseInput = document.getElementById('purchase');
+      const saleInput = document.getElementById('sale');
+
+      if (obj.type === 'purchase') {
+        purchaseInput.checked;
+      }
+      if (obj.type === 'sale') {
+        saleInput.checked;
+      }
+      const kindOfProductInput = document.getElementById('product');
+      kindOfProductInput.value = obj.product;
+      const descriptionInput = document.getElementById('description');
+      descriptionInput.value = obj.description;
+      const priceOfProductInput = document.getElementById('price');
+      priceOfProductInput.value = obj.price;
+
+      const submitBtn = document.createElement('button');
+      submitBtn.classList.add('button');
+      submitBtn.classList.add('fix-ads');
+      submitBtn.setAttribute('type', 'button');
+      submitBtn.textContent = 'Fix';
+      adsForm.appendChild(submitBtn);
+
+      submitBtn.addEventListener('click', () => {
+        ajaxDeleteFixAds(obj.id, operationOnAd, obj.login, purchaseInput, saleInput, kindOfProductInput.value, descriptionInput.value, priceOfProductInput.value);
+        
+        const adsWrapper = document.querySelector('.ads');
+        const adsForm = document.querySelector('.ads-form');
+        const modalBack = document.querySelector('.modal-back');
+        adsForm.remove();
+        modalBack.classList.remove('modal-back_active');
+        while (adsWrapper.firstChild) {
+          adsWrapper.removeChild(adsWrapper.firstChild);
+        }
+        setTimeout(() => {
+          ajaxShowMyAds(obj.login);
+        }, 1500);
+      })
     });
     closeWindow(adBlock);
   });

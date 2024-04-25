@@ -2,7 +2,20 @@
   $login = file_get_contents("php://input");
   
   $mysql = new mysqli("localhost", "root", "", "anyfinder");
-  $result = $mysql->query("SELECT * FROM `ads` WHERE `login` = '$login'");
+
+  $moderator = 0;
+  $result = $mysql->query("SELECT `moderator` FROM `users` WHERE `login` = '$login'");
+  if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $moderator = (int)$row['moderator'];
+  }
+
+  if ($moderator == 1) {
+    $result = $mysql->query("SELECT * FROM `ads` WHERE `status` = 'moderation'");
+  } else {
+    $result = $mysql->query("SELECT * FROM `ads` WHERE `login` = '$login'");
+  }
+
   $data = array();
   while ($row = $result->fetch_assoc()) {
     $data[] = $row;

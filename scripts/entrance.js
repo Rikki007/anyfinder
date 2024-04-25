@@ -20,6 +20,23 @@ function entrance() {
     userProfile.textContent = 'Profile';
     navList.appendChild(userProfile);
 
+    if (document.cookie.split(';')[3].split('=')[1] === '1') {
+      const moderationBtn = document.createElement('li');
+      moderationBtn.classList.add('navlist__item');
+      moderationBtn.classList.add('moderation-btn');
+      moderationBtn.textContent = 'Moderation';
+      navList.appendChild(moderationBtn);
+      
+      moderationBtn.addEventListener('click', () => {
+        const adsWrapper = document.querySelector('.ads');
+        while (adsWrapper.firstChild) {
+          adsWrapper.removeChild(adsWrapper.firstChild);
+        }
+        ajaxShowMyAds(document.cookie.split(';')[0].split('=')[1]);
+      });
+
+    }
+
     // user profile window
 
     userProfile.addEventListener('click', () => {
@@ -96,9 +113,20 @@ function entrance() {
       logOut.remove();
       userProfile.remove();
 
+      const moderationBtn = document.querySelector('.moderation-btn');
+      if (moderationBtn) {
+        moderationBtn.remove();
+      }
+      
       navItem.forEach((item) => {
         item.classList.remove('navlist__item_disabled');
       });
+
+      const adsWrapper = document.querySelector('.ads');
+
+      while (adsWrapper.firstChild) {
+        adsWrapper.removeChild(adsWrapper.firstChild);
+      }
     });
   }
 }
