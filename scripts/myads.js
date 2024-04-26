@@ -30,7 +30,7 @@ function myAds(obj) {
 
   // if user call ads himself, status of moderation well be visible
   
-  if (document.cookie.split(';')[0].split('=')[1] === obj.login || document.cookie.split(';')[0].split('=')[1] === 'moderator' || document.cookie.split(';')[0].split('=')[1] === 'admin') {
+  if (decodeURIComponent(document.cookie.split(';')[0].split('=')[1]) === obj.login || decodeURIComponent(document.cookie.split(';')[0].split('=')[1]) === 'moderator' || decodeURIComponent(document.cookie.split(';')[0].split('=')[1]) === 'admin') {
     const statusIcon = document.createElement('div');
     if (obj.status === 'moderation') {
       statusIcon.classList.add('ads-status__moderation');
@@ -192,7 +192,7 @@ function myAds(obj) {
       adsForm.appendChild(submitBtn);
 
       submitBtn.addEventListener('click', () => {
-        ajaxDeleteFixAds(obj.id, operationOnAd, obj.login, purchaseInput, saleInput, kindOfProductInput.value, descriptionInput.value, priceOfProductInput.value);
+        ajaxDeleteFixAds(obj.id, operationOnAd, purchaseInput, saleInput, kindOfProductInput.value, descriptionInput.value, priceOfProductInput.value);
         
         const adsWrapper = document.querySelector('.ads');
         const adsForm = document.querySelector('.ads-form');

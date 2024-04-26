@@ -11,7 +11,7 @@ function ajaxReg(login, password, typeOfAction, avatarNum) {
   request.addEventListener('load', () => {
     if (request.status >= 200 && request.status < 300) {
       if (request.responseText == "New record created successfully" || request.responseText == "User is founded") {
-        entrance();
+        console.log('entrance success.')
       } else if (request.responseText.includes('Duplicate')) {
         alert(' user with this login already exist try another login.');
       } else if (request.responseText === 'user not found') {
@@ -24,5 +24,6 @@ function ajaxReg(login, password, typeOfAction, avatarNum) {
   request.addEventListener('error', () => {
     console.error('request faild');
   });
+  
   request.send(JSON.stringify(formData));
 }

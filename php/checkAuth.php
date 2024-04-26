@@ -6,6 +6,7 @@
   $avatar = $data["avatarNum"];
 
   $mysql = new mysqli("localhost", "root", "", "anyfinder");
+  $mysql->set_charset("utf8");
 
   if($mysql->connect_error) {
       die("Connection failed: " . $mysql->connect_error);
@@ -30,7 +31,9 @@
         echo "user not found";
         exit();
     }
-    echo "User is founded";
+    // echo "User is founded";
+    header("Content-Type: application/json");
+    echo json_encode($user);
     setcookie("username", $user['login'], time() + 3600, "/");
     setcookie("avatar", $user['avatar'], time() + 3600,"/");
     setcookie("admin", $user['admin'], time() + 3600,"/");

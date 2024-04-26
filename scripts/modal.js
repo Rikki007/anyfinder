@@ -151,12 +151,15 @@
       let passwordVal = password.value;
       if (loginVal.length <= 3) {
         alert('Login is too short. It must be longer than 3 characters.');
+        return
       }
       if (submitBtn.textContent === 'Register' && avatarNum === undefined) {
         alert('Choose the avatar');
+        return
       }
       if (passwordVal.length <= 3) {
         alert('Password is too short. It must be longer than 3 characters.');
+        return
       } else if (loginVal.length > 3 && passwordVal.length > 3) {
 
         if (submitBtn.textContent === 'Register') {
@@ -164,7 +167,10 @@
           ajaxReg(loginVal, passwordVal, typeOfAction, avatarNum);
           modalWindowBack.classList.remove('modal-back_active');
           regForm.remove();
-          entrance();
+          // spinner
+          setTimeout(() => {
+            entrance();
+          }, 1000);
         }
         if (submitBtn.textContent === 'Login') {
           const typeOfAction = 'l';
@@ -172,7 +178,10 @@
           ajaxReg(loginVal, passwordVal, typeOfAction, avatarNum);
           modalWindowBack.classList.remove('modal-back_active');
           regForm.remove();
-          entrance();
+          // spinner
+          setTimeout(() => {
+            entrance();
+          }, 1000);
         }
       }
     });

@@ -32,7 +32,7 @@ function entrance() {
         while (adsWrapper.firstChild) {
           adsWrapper.removeChild(adsWrapper.firstChild);
         }
-        ajaxShowMyAds(document.cookie.split(';')[0].split('=')[1]);
+        ajaxShowMyAds(decodeURIComponent(document.cookie.split(';')[0].split('=')[1]));
       });
 
     }
@@ -58,7 +58,7 @@ function entrance() {
 
       const profName = document.createElement('h2');
       profName.classList.add('profile-block__name');
-      profName.textContent = cookieValues[0].split('%20').join(' ');
+      profName.textContent = decodeURIComponent(cookieValues[0].split('%20').join(' '));
       profBlock.appendChild(profName);
 
       const myAds = document.createElement('button');
@@ -83,7 +83,7 @@ function entrance() {
       createAdvertisement.appendChild(adsImg);
 
       myAds.addEventListener('click', () => {
-        const login = document.cookie.split(';')[0].split('=')[1];        
+        const login = decodeURIComponent(document.cookie.split(';')[0].split('=')[1]);        
         modalBack.classList.remove('modal-back_active');
         profileWrapper.remove();
         const adsWrapper = document.querySelector('.ads');

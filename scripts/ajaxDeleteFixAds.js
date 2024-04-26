@@ -1,4 +1,4 @@
-function ajaxDeleteFixAds(id, operationOnAd, login, purchaseRadio, saleRadio, prod, descr, price) {
+function ajaxDeleteFixAds(id, operationOnAd, purchaseRadio, saleRadio, prod, descr, price) {
   let operationType;
   if (operationOnAd === 'fix') {
     
