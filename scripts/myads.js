@@ -143,6 +143,15 @@ function myAds(obj) {
       } else {
         menuWrapper.classList.remove('menu-wrapper_active');
       }
+
+      if (document.cookie.split(';')[3].split('=')[1] === '1' && decodeURIComponent(document.cookie.split(';')[0].split('=')[1]) !== obj.login) {
+        deleteBtn.remove();
+        fixBtn.remove();
+      }
+      if (document.cookie.split(';')[3].split('=')[1] !== '1') {
+        rejectedBtn.remove();
+        approvedBtn.remove();
+      }
     });
 
     deleteBtn.addEventListener('click', () => {

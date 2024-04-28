@@ -40,6 +40,7 @@
 }
 
 .description {
+  height: 1rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
