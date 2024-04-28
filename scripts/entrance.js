@@ -29,10 +29,11 @@ function entrance() {
       
       moderationBtn.addEventListener('click', () => {
         const adsWrapper = document.querySelector('.ads');
+        const isModerator = true;
         while (adsWrapper.firstChild) {
           adsWrapper.removeChild(adsWrapper.firstChild);
         }
-        ajaxShowMyAds(decodeURIComponent(document.cookie.split(';')[0].split('=')[1]));
+        ajaxShowMyAds(decodeURIComponent(document.cookie.split(';')[0].split('=')[1]), isModerator);
       });
 
     }
@@ -83,14 +84,15 @@ function entrance() {
       createAdvertisement.appendChild(adsImg);
 
       myAds.addEventListener('click', () => {
-        const login = decodeURIComponent(document.cookie.split(';')[0].split('=')[1]);        
+        const login = decodeURIComponent(document.cookie.split(';')[0].split('=')[1]);
+        const isModerator = false;     
         modalBack.classList.remove('modal-back_active');
         profileWrapper.remove();
         const adsWrapper = document.querySelector('.ads');
         while (adsWrapper.firstChild) {
           adsWrapper.removeChild(adsWrapper.firstChild);
         }
-        ajaxShowMyAds(login);
+        ajaxShowMyAds(login, isModerator);
       });
 
       closeWindow(profileWrapper);

@@ -1,6 +1,6 @@
 .card {
   width: 250px;
-  height: 350px;
+  height: 380px;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -122,15 +122,15 @@
 
 .menu-wrapper {
   display: none;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 5rem;
+  height: 5rem;
   background-image: url(../img/menu-circle.svg);
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
   border-radius: 50%;
-  top: -2.7rem;
-  left: -2.9rem;
+  top: -3.8rem;
+  left: -4.2rem;
   z-index: 20;
 }
 
@@ -139,14 +139,14 @@
 }
 
 .delete-btn {
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 3rem;
+  height: 3rem;
   background-image: url(../img/menu-trash.svg);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  top: -1.8rem;
-  left: -1.2rem;
+  top: -5.5rem;
+  left: 2rem;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -156,18 +156,54 @@
 }
 
 .fix-btn {
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   background-image: url(../img/menu-fix.svg);
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  top: 3.3rem;
-  left: -1.3rem;
+  top: 8rem;
+  left: -0.1rem;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .fix-btn:hover {
+  transform: scale(1.2);
+}
+
+.rejected-btn {
+  width: 5rem;
+  height: 5rem;
+  background-image: url(../img/rejected.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 4rem;
+  left: -8rem;
+  rotate: 2deg;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.rejected-btn:hover {
+  transform: scale(1.2);
+}
+
+.approved-btn {
+  width: 5rem;
+  height: 5rem;
+  background-image: url(../img/approved.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: -4rem;
+  left: -8rem;
+  rotate: 38deg;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.approved-btn:hover {
   transform: scale(1.2);
 }

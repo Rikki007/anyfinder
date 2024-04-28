@@ -1,7 +1,11 @@
-function ajaxShowMyAds(login) {
+function ajaxShowMyAds(login, isModerator) {
+  const data = {
+    login: login,
+    isModerator: isModerator,
+  }
   const request = new XMLHttpRequest();
   request.open('POST', './php/myAdsResponse.php', true);
-  request.setRequestHeader('content-Type', 'text/plain');
+  request.setRequestHeader('content-Type', 'application/json');
   request.addEventListener('load', ()=> {
     if (request.status >= 200 && request.status < 300) {
       const arrayAds = JSON.parse(request.response);
@@ -16,5 +20,5 @@ function ajaxShowMyAds(login) {
   request.addEventListener('error', () => {
     console.error('request faild');
   });
-  request.send(login);
+  request.send(JSON.stringify(data));
 }

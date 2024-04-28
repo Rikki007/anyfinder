@@ -45,14 +45,14 @@ function myAds(obj) {
   }
  
 
-  const typeOfOperation = document.createElement('h3');
+  const typeOfOperation = document.createElement('p');
   typeOfOperation.classList.add('purchase-sale');
   typeOfOperation.textContent = obj.type;
   adBlock.appendChild(typeOfOperation);
 
   const prod = document.createElement('h3');
-  typeOfOperation.classList.add('purchase-sale');
-  typeOfOperation.textContent = obj.product;
+  prod.classList.add('purchase-sale');
+  prod.textContent = obj.product;
   adBlock.appendChild(prod);
 
   const description = document.createElement('p');
@@ -60,7 +60,7 @@ function myAds(obj) {
   description.textContent = obj.description;
   adBlock.appendChild(description);
 
-  const price = document.createElement('h3');
+  const price = document.createElement('p');
   price.classList.add('purchase-sale');
   price.textContent = obj.price;
   adBlock.appendChild(price);
@@ -109,6 +109,8 @@ function myAds(obj) {
     price.textContent = obj.price;
     adBlock.appendChild(price);
 
+    console.log(obj);
+
     // menu for delete/fix ads
 
     const menuButton = document.createElement('div');
@@ -127,6 +129,14 @@ function myAds(obj) {
     fixBtn.classList.add('fix-btn');
     menuWrapper.appendChild(fixBtn);
 
+    const rejectedBtn = document.createElement('div');
+    rejectedBtn.classList.add('rejected-btn');
+    menuWrapper.appendChild(rejectedBtn);
+
+    const approvedBtn = document.createElement('div');
+    approvedBtn.classList.add('approved-btn');
+    menuWrapper.appendChild(approvedBtn);
+
     menuButton.addEventListener('click', () => {
       if (!menuWrapper.classList.contains('menu-wrapper_active')) {
         menuWrapper.classList.add('menu-wrapper_active');
@@ -141,6 +151,7 @@ function myAds(obj) {
       const cardForm = document.querySelector('.card__extended');
       const menuWrapper = document.querySelector('.menu-wrapper');
       const modalWindowBack = document.querySelector('.modal-back');
+      const isModerator = false;
 
       ajaxDeleteFixAds(obj.id, operationOnAd, '', '', '', '', '', '');
 
@@ -155,7 +166,7 @@ function myAds(obj) {
        
 
       setTimeout(() => {
-        ajaxShowMyAds(obj.login);
+        ajaxShowMyAds(obj.login, isModerator);
       }, 1000);
     });
 
@@ -199,14 +210,67 @@ function myAds(obj) {
         const modalBack = document.querySelector('.modal-back');
         adsForm.remove();
         modalBack.classList.remove('modal-back_active');
+        const isModerator = false;
+      
         while (adsWrapper.firstChild) {
           adsWrapper.removeChild(adsWrapper.firstChild);
         }
         setTimeout(() => {
-          ajaxShowMyAds(obj.login);
+          ajaxShowMyAds(obj.login, isModerator);
         }, 1500);
-      })
+      });
     });
+
+    approvedBtn.addEventListener('click', () => {
+      const adsWrapper = document.querySelector('.ads');
+      const status = 'approved';
+      const cardForm = document.querySelector('.card__extended');
+      const menuWrapper = document.querySelector('.menu-wrapper');
+      const modalWindowBack = document.querySelector('.modal-back');
+      const isModerator = true;
+
+      ajaxModeration(obj.id, status);
+
+      while (adsWrapper.firstChild) {
+        adsWrapper.removeChild(adsWrapper.firstChild);
+      }
+      
+      menuWrapper.remove();
+      cardForm.remove();
+      modalWindowBack.classList.remove('modal-back_active');
+
+       
+
+      setTimeout(() => {
+        ajaxShowMyAds(decodeURIComponent(document.cookie.split(';')[0].split('=')[1]), isModerator);
+      }, 1000);
+    });
+
+    rejectedBtn.addEventListener('click', () => {
+      const adsWrapper = document.querySelector('.ads');
+      const status = 'rejected';
+      const cardForm = document.querySelector('.card__extended');
+      const menuWrapper = document.querySelector('.menu-wrapper');
+      const modalWindowBack = document.querySelector('.modal-back');
+      isModerator = true;
+
+      ajaxModeration(obj.id, status);
+
+      while (adsWrapper.firstChild) {
+        adsWrapper.removeChild(adsWrapper.firstChild);
+      }
+      
+      menuWrapper.remove();
+      cardForm.remove();
+      modalWindowBack.classList.remove('modal-back_active');
+
+       
+
+      setTimeout(() => {
+        ajaxShowMyAds(decodeURIComponent(document.cookie.split(';')[0].split('=')[1]), isModerator);
+      }, 1000);
+    });
+
     closeWindow(adBlock);
   });
 }

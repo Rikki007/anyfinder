@@ -10,7 +10,7 @@
 
   $mysql = new mysqli("localhost", "root", "", "anyfinder");
 
-  if ($mysql->connect_error) {
+  if($mysql->connect_error) {
     die("Connection failed: " . $mysql->connect_error);
   }
   if($operationOnAd == 'delete') {

@@ -1,5 +1,8 @@
 <?php
-  $login = file_get_contents("php://input");
+  $data = json_decode(file_get_contents("php://input"), true);
+
+  $login = $data["login"];
+  $isModerator = $data["isModerator"];
   
   $mysql = new mysqli("localhost", "root", "", "anyfinder");
 
@@ -10,7 +13,7 @@
     $moderator = (int)$row['moderator'];
   }
 
-  if ($moderator == 1) {
+  if ($moderator == 1 && $isModerator == true) {
     $result = $mysql->query("SELECT * FROM `ads` WHERE `status` = 'moderation'");
   } else {
     $result = $mysql->query("SELECT * FROM `ads` WHERE `login` = '$login'");
