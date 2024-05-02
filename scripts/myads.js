@@ -91,7 +91,7 @@ function myAds(obj) {
     menuButton.classList.add('dot_menu');
     adBlock.appendChild(menuButton);
 
-    if (!document.cookie) {
+    if (document.cookie.split(';')[0].split('=')[1] !== obj.login) {
       menuButton.remove();
     }
 
