@@ -35,8 +35,13 @@ function entrance() {
         }
         ajaxShowMyAds(decodeURIComponent(document.cookie.split(';')[0].split('=')[1]), isModerator);
       });
-
     }
+
+    const allAds = document.createElement('li');
+    allAds.classList.add('navlist__item');
+    allAds.classList.add('all-ads');
+    allAds.textContent = 'Ads';
+    navList.appendChild(allAds);
 
     // user profile window
 
@@ -114,6 +119,7 @@ function entrance() {
       document.cookie = "moderator=; max-age=-1; path=/";
       logOut.remove();
       userProfile.remove();
+      allAds.remove();
 
       const moderationBtn = document.querySelector('.moderation-btn');
       if (moderationBtn) {
@@ -129,7 +135,19 @@ function entrance() {
       while (adsWrapper.firstChild) {
         adsWrapper.removeChild(adsWrapper.firstChild);
       }
+
+      loadAds();
     });
+
+    allAds.addEventListener('click', () => {
+      const adsWrapper = document.querySelector('.ads');
+
+      while (adsWrapper.firstChild) {
+        adsWrapper.removeChild(adsWrapper.firstChild);
+      }
+
+      loadAds();
+    })
   }
 }
 

@@ -6,8 +6,10 @@ function ajaxReg(login, password, typeOfAction, avatarNum) {
     avatarNum: avatarNum,
   };
   const request = new XMLHttpRequest();
+
   request.open('POST', './php/checkAuth.php', true);
   request.setRequestHeader('Content-Type', 'application/json');
+  
   request.addEventListener('load', () => {
     if (request.status >= 200 && request.status < 300) {
       if (request.responseText == "New record created successfully" || request.responseText == "User is founded") {
@@ -21,6 +23,7 @@ function ajaxReg(login, password, typeOfAction, avatarNum) {
       console.error('request faild: ' + request.status);
     }
   });
+
   request.addEventListener('error', () => {
     console.error('request faild');
   });

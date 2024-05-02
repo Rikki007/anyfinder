@@ -39,8 +39,14 @@
   right: 0.5rem;
 }
 
+.card__product {
+  height: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .description {
-  height: 1rem;
+  height: 1.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -94,7 +100,7 @@
 .description__extended {
   width: 110%;
   padding: 1rem;
-  height: 20rem;
+  height: 18rem;
   border: 1px solid black;
   border-radius: 1rem;
 }
@@ -123,31 +129,25 @@
 
 .menu-wrapper {
   display: none;
-  width: 5rem;
-  height: 5rem;
-  background-image: url(../img/menu-circle.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  width: 6.5rem;
+  padding: 0.8rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #FFFFFF;
+  box-shadow: 3px 5px 20px white;
   position: absolute;
-  border-radius: 50%;
-  top: -3.8rem;
-  left: -4.2rem;
+  top: 0rem;
+  left: -6.5rem;
   z-index: 20;
+  transition: 0.3s;
 }
 
 .menu-wrapper_active {
-  display: block;
+  display: flex;
 }
 
 .delete-btn {
-  width: 3rem;
-  height: 3rem;
-  background-image: url(../img/menu-trash.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  top: -5.5rem;
-  left: 2rem;
+  width: 6rem;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -157,14 +157,7 @@
 }
 
 .fix-btn {
-  width: 3rem;
-  height: 3rem;
-  background-image: url(../img/menu-fix.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  top: 8rem;
-  left: -0.1rem;
+  width: 6rem;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -175,14 +168,6 @@
 
 .rejected-btn {
   width: 5rem;
-  height: 5rem;
-  background-image: url(../img/rejected.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  top: 4rem;
-  left: -8rem;
-  rotate: 2deg;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -193,14 +178,6 @@
 
 .approved-btn {
   width: 5rem;
-  height: 5rem;
-  background-image: url(../img/approved.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  top: -4rem;
-  left: -8rem;
-  rotate: 38deg;
   cursor: pointer;
   transition: 0.3s;
 }

@@ -19,39 +19,13 @@ function myAds(obj) {
   dateOfApproval.textContent = obj.date.split(' ')[0];
   adBlock.appendChild(dateOfApproval);
 
-  const adsStatus = document.createElement('div');
-  adsStatus.classList.add('ads-status');
-  adBlock.appendChild(adsStatus);
-
-  const statusDescription = document.createElement('p');
-  statusDescription.classList.add('ads-status__description');
-  statusDescription.textContent = `status: ${obj.status}`;
-  adsStatus.appendChild(statusDescription);
-
-  // if user call ads himself, status of moderation well be visible
-  
-  if (decodeURIComponent(document.cookie.split(';')[0].split('=')[1]) === obj.login || decodeURIComponent(document.cookie.split(';')[0].split('=')[1]) === 'moderator' || decodeURIComponent(document.cookie.split(';')[0].split('=')[1]) === 'admin') {
-    const statusIcon = document.createElement('div');
-    if (obj.status === 'moderation') {
-      statusIcon.classList.add('ads-status__moderation');
-    }
-    if (obj.status === 'approved') {
-      statusIcon.classList.add('ads-status__approved');
-    }
-    if (obj.status === 'rejected') {
-      statusIcon.classList.add('ads-status__rejected');
-    }
-    adsStatus.appendChild(statusIcon);
-  }
- 
-
   const typeOfOperation = document.createElement('p');
   typeOfOperation.classList.add('purchase-sale');
   typeOfOperation.textContent = obj.type;
   adBlock.appendChild(typeOfOperation);
 
   const prod = document.createElement('h3');
-  prod.classList.add('purchase-sale');
+  prod.classList.add('card__product');
   prod.textContent = obj.product;
   adBlock.appendChild(prod);
 
@@ -95,8 +69,8 @@ function myAds(obj) {
     adBlock.appendChild(typeOfOperation);
 
     const prod = document.createElement('h3');
-    typeOfOperation.classList.add('purchase-sale');
-    typeOfOperation.textContent = obj.product;
+    prod.classList.add('purchase-sale');
+    prod.textContent = obj.product;
     adBlock.appendChild(prod);
 
     const description = document.createElement('p');
@@ -117,23 +91,31 @@ function myAds(obj) {
     menuButton.classList.add('dot_menu');
     adBlock.appendChild(menuButton);
 
+    if (!document.cookie) {
+      menuButton.remove();
+    }
+
     const menuWrapper = document.createElement('div');
     menuWrapper.classList.add('menu-wrapper');
     modalWindow.appendChild(menuWrapper);
 
-    const deleteBtn = document.createElement('div');
+    const deleteBtn = document.createElement('p');
+    deleteBtn.textContent = 'delete';
     deleteBtn.classList.add('delete-btn');
     menuWrapper.appendChild(deleteBtn);
 
-    const fixBtn = document.createElement('div');
+    const fixBtn = document.createElement('p');
+    fixBtn.textContent = 'fix';
     fixBtn.classList.add('fix-btn');
     menuWrapper.appendChild(fixBtn);
 
-    const rejectedBtn = document.createElement('div');
+    const rejectedBtn = document.createElement('p');
+    rejectedBtn.textContent = 'reject';
     rejectedBtn.classList.add('rejected-btn');
     menuWrapper.appendChild(rejectedBtn);
 
-    const approvedBtn = document.createElement('div');
+    const approvedBtn = document.createElement('p');
+    approvedBtn.textContent = 'approved';
     approvedBtn.classList.add('approved-btn');
     menuWrapper.appendChild(approvedBtn);
 
