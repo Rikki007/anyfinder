@@ -49,6 +49,9 @@ function entrance() {
       modalBack.classList.add('modal-back_active');
       cookieValues = document.cookie.split(';').map(item => item.split('=')[1]);
 
+      const body = document.querySelector('body');
+      body.classList.add('body_inactive');
+
       const profileWrapper = document.createElement('div');
       profileWrapper.classList.add('profile-wrapper');
       modalWindow.appendChild(profileWrapper);
@@ -93,6 +96,7 @@ function entrance() {
         const isModerator = false;     
         modalBack.classList.remove('modal-back_active');
         profileWrapper.remove();
+        body.classList.remove('body_inactive');
         const adsWrapper = document.querySelector('.ads');
         while (adsWrapper.firstChild) {
           adsWrapper.removeChild(adsWrapper.firstChild);

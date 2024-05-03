@@ -120,5 +120,7 @@ function adsFormCreate() {
     ajaxAds(login, purchaseInput, saleInput, kindOfProductInput, descriptionInput, priceOfProductInput);
     adsForm.remove();
     backContainer.classList.remove('modal-back_active');
+    const body = document.querySelector('body');
+    body.classList.remove('body_inactive');
   });
 }

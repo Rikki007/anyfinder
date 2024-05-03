@@ -108,11 +108,12 @@
     logMenuBtn.setAttribute('type', 'button');
     logMenuBtn.textContent = '-->';
     logBlock.appendChild(logMenuBtn);
+
     // close of registration/login window
+
     closeWindow(regForm);
 
     const transition = document.querySelectorAll('.button');
-
     transition.forEach((item) => {
       if (item.classList.contains('login-link')) {
         item.addEventListener('click', () => {
@@ -149,6 +150,8 @@
       const password = document.getElementById('password');
       let loginVal = login.value;
       let passwordVal = password.value;
+      const body = document.querySelector('body');
+
       if (loginVal.length <= 3) {
         alert('Login is too short. It must be longer than 3 characters.');
         return
@@ -167,6 +170,7 @@
           ajaxReg(loginVal, passwordVal, typeOfAction, avatarNum);
           modalWindowBack.classList.remove('modal-back_active');
           regForm.remove();
+          body.classList.remove('body_inactive');
           // spinner
           setTimeout(() => {
             entrance();
@@ -178,6 +182,7 @@
           ajaxReg(loginVal, passwordVal, typeOfAction, avatarNum);
           modalWindowBack.classList.remove('modal-back_active');
           regForm.remove();
+          body.classList.remove('body_inactive');
           // spinner
           setTimeout(() => {
             entrance();
@@ -185,15 +190,24 @@
         }
       }
     });
+
     // function which work if inter in your account
+
     entrance();
-    
   }
 
-  regBtn.addEventListener('click', () => regWindow(regObj));
+  regBtn.addEventListener('click', () => {
+    regWindow(regObj);
+    const body = document.querySelector('body');
+    body.classList.add('body_inactive');
+  });
 
   // login window
   const logBtn = document.querySelector('.log-in');
 
-  logBtn.addEventListener('click', () => regWindow(logObj));
+  logBtn.addEventListener('click', () => {
+    regWindow(logObj);
+    const body = document.querySelector('body');
+    body.classList.add('body_inactive');
+  });
 })();

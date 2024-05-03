@@ -44,6 +44,9 @@ function myAds(obj) {
     const modalWindow = document.querySelector('.modal-window');
     modalBack.classList.add('modal-back_active');
 
+    const body = document.querySelector('body');
+    body.classList.add('body_inactive');
+
     const adBlock = document.createElement('div');
     adBlock.classList.add('card__extended');
     modalWindow.appendChild(adBlock);
@@ -153,6 +156,7 @@ function myAds(obj) {
       menuWrapper.remove();
       cardForm.remove();
       modalWindowBack.classList.remove('modal-back_active');
+      body.classList.remove('body_inactive');
 
        
 
@@ -201,6 +205,9 @@ function myAds(obj) {
         const modalBack = document.querySelector('.modal-back');
         adsForm.remove();
         modalBack.classList.remove('modal-back_active');
+
+        body.classList.remove('body_inactive');
+
         const isModerator = false;
       
         while (adsWrapper.firstChild) {
@@ -229,8 +236,7 @@ function myAds(obj) {
       menuWrapper.remove();
       cardForm.remove();
       modalWindowBack.classList.remove('modal-back_active');
-
-       
+      body.classList.remove('body_inactive');
 
       setTimeout(() => {
         ajaxShowMyAds(decodeURIComponent(document.cookie.split(';')[0].split('=')[1]), isModerator);
@@ -254,9 +260,8 @@ function myAds(obj) {
       menuWrapper.remove();
       cardForm.remove();
       modalWindowBack.classList.remove('modal-back_active');
-
-       
-
+      body.classList.remove('body_inactive');
+      
       setTimeout(() => {
         ajaxShowMyAds(decodeURIComponent(document.cookie.split(';')[0].split('=')[1]), isModerator);
       }, 1000);
