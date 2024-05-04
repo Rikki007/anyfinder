@@ -46,6 +46,7 @@ body {
 }
 
 .body_inactive {
+  padding-right: 14px;
   overflow-y: hidden;
 }
 
@@ -66,6 +67,39 @@ body {
 .logo {
   max-width: 12rem;
   border-radius: 2rem;
+}
+
+.search {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search__field {
+  width: 12rem;
+  padding: 0.5rem;
+  height: 2rem;
+  font-size: 1.1rem;
+  border-radius: 1rem;
+  border: 1px solid black;
+}
+
+.search__button {
+  width: 4.5rem;
+  height: 2rem;
+  border-radius: 1rem;
+  border: transparent;
+  background-color: rgb(111, 58, 160);
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search__button:hover {
+  box-shadow: 1px 1px 2px black;
+}
+
+.search__button:active {
+  background-color: rgb(178, 98, 253);
 }
 
 .navlist__item {

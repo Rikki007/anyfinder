@@ -88,14 +88,19 @@ function myAds(obj) {
 
     console.log(obj);
 
-    // menu for delete/fix ads
+    // menu for different users ads
 
     const menuButton = document.createElement('div');
     menuButton.classList.add('dot_menu');
-    adBlock.appendChild(menuButton);
+    
+    if (!document.cookie) {
 
-    if (document.cookie.split(';')[0].split('=')[1] !== obj.login) {
       menuButton.remove();
+
+    } else if ((document.cookie.split(';')[0].split('=')[1] == obj.login) || (document.cookie.split(';')[2].split('=')[1] == '1') || (document.cookie.split(';')[3].split('=')[1] == '1')) {
+
+      adBlock.appendChild(menuButton);
+
     }
 
     const menuWrapper = document.createElement('div');
