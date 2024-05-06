@@ -3,10 +3,19 @@ function entrance() {
   const navItem = document.querySelectorAll('.navlist__item');
   const modalBack = document.querySelector('.modal-back');
   const modalWindow = document.querySelector('.modal-window');
+
+  const allAds = document.createElement('li');
+    allAds.classList.add('navlist__item');
+    allAds.classList.add('all-ads');
+    allAds.textContent = 'Ads';
+    navList.appendChild(allAds);
+
   if (document.cookie) {
     navItem.forEach((item) => {
       item.classList.add('navlist__item_disabled');
     });
+
+    allAds.classList.remove('navlist__item_disabled');
   
     const logOut = document.createElement('li');
     logOut.classList.add('navlist__item');
@@ -36,12 +45,6 @@ function entrance() {
         ajaxShowMyAds(decodeURIComponent(document.cookie.split(';')[0].split('=')[1]), isModerator);
       });
     }
-
-    const allAds = document.createElement('li');
-    allAds.classList.add('navlist__item');
-    allAds.classList.add('all-ads');
-    allAds.textContent = 'Ads';
-    navList.appendChild(allAds);
 
     // user profile window
 
@@ -123,7 +126,6 @@ function entrance() {
       document.cookie = "moderator=; max-age=-1; path=/";
       logOut.remove();
       userProfile.remove();
-      allAds.remove();
 
       const moderationBtn = document.querySelector('.moderation-btn');
       if (moderationBtn) {
@@ -142,17 +144,18 @@ function entrance() {
 
       loadAds();
     });
-
-    allAds.addEventListener('click', () => {
-      const adsWrapper = document.querySelector('.ads');
-
-      while (adsWrapper.firstChild) {
-        adsWrapper.removeChild(adsWrapper.firstChild);
-      }
-
-      loadAds();
-    })
   }
+
+  allAds.addEventListener('click', () => {
+    const adsWrapper = document.querySelector('.ads');
+
+    while (adsWrapper.firstChild) {
+      adsWrapper.removeChild(adsWrapper.firstChild);
+    }
+
+    loadAds();
+  });
+
 }
 
 entrance();
