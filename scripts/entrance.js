@@ -3,12 +3,7 @@ function entrance() {
   const navItem = document.querySelectorAll('.navlist__item');
   const modalBack = document.querySelector('.modal-back');
   const modalWindow = document.querySelector('.modal-window');
-
-  const allAds = document.createElement('li');
-    allAds.classList.add('navlist__item');
-    allAds.classList.add('all-ads');
-    allAds.textContent = 'Ads';
-    navList.appendChild(allAds);
+  const allAds = document.querySelector('.all-ads');
 
   if (document.cookie) {
     navItem.forEach((item) => {
@@ -28,6 +23,8 @@ function entrance() {
     userProfile.classList.add('user-profile');
     userProfile.textContent = 'Profile';
     navList.appendChild(userProfile);
+
+    allAds.classList.remove('navlist__item_disabled');
 
     if (document.cookie.split(';')[3].split('=')[1] === '1') {
       const moderationBtn = document.createElement('li');

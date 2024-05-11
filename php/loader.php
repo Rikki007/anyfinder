@@ -1,6 +1,9 @@
 <?php
+  $offset = file_get_contents(("php://input"), true);
+  $numOfRecords = 12;
+
   $mysql = new mysqli("localhost", "root", "", "anyfinder");
-  $query = $mysql->query("SELECT * FROM `ads` WHERE `status` = 'approved'");
+  $query = $mysql->query("SELECT * FROM `ads` WHERE `status` = 'approved' LIMIT $offset, $numOfRecords");
   $data = array();
   while ($row = $query->fetch_assoc()) {
     $data[] = $row;
