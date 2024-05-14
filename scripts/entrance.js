@@ -36,12 +36,24 @@ function entrance() {
       moderationBtn.addEventListener('click', () => {
         const adsWrapper = document.querySelector('.ads');
         const isModerator = true;
-        while (adsWrapper.firstChild) {
-          adsWrapper.removeChild(adsWrapper.firstChild);
-        }
+        adsWrapper.innerHTML = '';
         ajaxShowMyAds(decodeURIComponent(document.cookie.split(';')[0].split('=')[1]), isModerator);
       });
     }
+
+    if (document.cookie.split(';')[2].split('=')[1] === '1') {
+      const usersBtn = document.createElement('li');
+      usersBtn.classList.add('navlist__item');
+      usersBtn.classList.add('users-btn');
+      usersBtn.textContent = 'Users';
+      navList.appendChild(usersBtn);
+
+      usersBtn.addEventListener('click', () => {
+        ajaxUsers();
+      });
+    }
+
+    
 
     // user profile window
 
@@ -128,6 +140,11 @@ function entrance() {
       if (moderationBtn) {
         moderationBtn.remove();
       }
+
+      const usersBtn = document.querySelector('.users-btn');
+      if (usersBtn) {
+        usersBtn.remove();
+      }
       
       navItem.forEach((item) => {
         item.classList.remove('navlist__item_disabled');
@@ -144,11 +161,9 @@ function entrance() {
   }
 
   allAds.addEventListener('click', () => {
-    const adsWrapper = document.querySelector('.ads');
 
-    while (adsWrapper.firstChild) {
-      adsWrapper.removeChild(adsWrapper.firstChild);
-    }
+    const adsWrapper = document.querySelector('.ads');
+    adsWrapper.innerHTML = '';
 
     loadAds();
   });
