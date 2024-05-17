@@ -6,6 +6,10 @@
   
   $mysql = new mysqli("localhost", "root", "", "anyfinder");
 
+  if($mysql->connect_error) {
+    die("Connection failed: " . $mysql->connect_error);
+  }
+
   $moderator = 0;
   $result = $mysql->query("SELECT `moderator` FROM `users` WHERE `login` = '$login'");
   if ($result->num_rows > 0) {
@@ -29,4 +33,5 @@
   }
   header("Content-Type: application/json");
   echo json_encode($data);
+  
   $mysql->close();

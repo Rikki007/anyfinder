@@ -14,4 +14,5 @@
   }else{
     echo $mysql->error;
   }
-   
+
+  $mysql->close();
