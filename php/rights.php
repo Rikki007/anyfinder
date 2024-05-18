@@ -13,29 +13,33 @@
   if($type === 'moderator' && $action === 'give') {
     $tiny = 1;
     $query = $mysql->query("UPDATE `users` SET `moderator` = '$tiny' WHERE `login` = '$login'");
-    $res = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login'");
-    echo $res->fetch_assoc();
+    $res = $mysql->query("SELECT `login`, `admin`, `moderator` FROM `users` WHERE `login` = '$login'");
+    header("Content-Type: application/json");
+    echo json_encode($res->fetch_assoc());
   }
 
   if($type === 'moderator' && $action === 'take') {
     $tiny = 0;
     $query = $mysql->query("UPDATE `users` SET `moderator` = '$tiny' WHERE `login` = '$login'");
-    $res = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login'");
-    echo $res->fetch_assoc();
+    $res = $mysql->query("SELECT `login`, `admin`, `moderator` FROM `users` WHERE `login` = '$login'");
+    header("Content-Type: application/json");
+    echo json_encode($res->fetch_assoc());
   }
 
   if($type === 'admin' && $action === 'give') {
     $tiny = 1;
     $query = $mysql->query("UPDATE `users` SET `admin` = '$tiny' WHERE `login` = '$login'");
-    $res = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login'");
-    echo $res->fetch_assoc();
+    $res = $mysql->query("SELECT `login`, `admin`, `moderator` FROM `users` WHERE `login` = '$login'");
+    header("Content-Type: application/json");
+    echo json_encode($res->fetch_assoc());
   }
 
   if($type === 'admin' && $action === 'take') {
     $tiny = 0;
     $query = $mysql->query("UPDATE `users` SET `admin` = '$tiny' WHERE `login` = '$login'");
-    $res = $mysql->query("SELECT * FROM `users` WHERE `login` = '$login'");
-    echo $res->fetch_assoc();
+    $res = $mysql->query("SELECT `login`, `admin`, `moderator` FROM `users` WHERE `login` = '$login'");
+    header("Content-Type: application/json");
+    echo json_encode($res->fetch_assoc());
   }
 
   $mysql->close();

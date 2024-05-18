@@ -150,10 +150,6 @@ function ajaxUsers () {
             data.login = item.login;
             data.type = 'moderator';
             data.action = eventsList.children[1].lastChild.textContent;
-            console.log(data);
-
-            modalBack.classList.remove('modal-back_active');
-            eventsList.remove();
 
             const request = new XMLHttpRequest();
             request.open('POST', './php/rights.php', true);
@@ -161,7 +157,70 @@ function ajaxUsers () {
 
             request.addEventListener('load', () => {
               if (request.status >= 200 && request.status < 300) {
-                console.log(request.response);
+                const response = JSON.parse(request.response);
+
+                if (response.moderator === '0') {
+                  mStatus = 'No';
+                  moderator.textContent = `Moderator: ${mStatus};`;
+                  item.moderator = '0';
+                  userToModeratorBtn.textContent = 'give';
+                }
+
+                if (response.moderator === '1') {
+                  mStatus = 'Yes';
+                  moderator.textContent = `Moderator: ${mStatus};`;
+                  item.moderator = '1';
+                  userToModeratorBtn.textContent = 'take';
+                }
+
+                modalBack.classList.remove('modal-back_active');
+                eventsList.remove();
+
+              } else {
+                console.error('request faild: ' + request.status);
+              }
+            });
+
+            request.addEventListener('error', () => {
+              console.error('request faild');
+            });
+
+            request.send(JSON.stringify(data));
+
+          });
+
+          userToAdminBtn.addEventListener('click', () => {
+
+            const data = {};
+            data.login = item.login;
+            data.type = 'admin';
+            data.action = eventsList.children[2].lastChild.textContent;
+
+            const request = new XMLHttpRequest();
+            request.open('POST', './php/rights.php', true);
+            request.setRequestHeader("Content-Type", "application/json");
+
+            request.addEventListener('load', () => {
+              if (request.status >= 200 && request.status < 300) {
+                const response = JSON.parse(request.response);
+
+                if (response.admin === '0') {
+                  aStatus = 'No';
+                  administrator.textContent = `Administrator: ${aStatus};`;
+                  item.admin = '0';
+                  userToAdminBtn.textContent = 'give';
+                }
+
+                if (response.admin === '1') {
+                  aStatus = 'Yes';
+                  administrator.textContent = `Administrator: ${aStatus};`;
+                  item.admin = '1';
+                  userToAdminBtn.textContent = 'take';
+                }
+
+                modalBack.classList.remove('modal-back_active');
+                eventsList.remove();
+
               } else {
                 console.error('request faild: ' + request.status);
               }
