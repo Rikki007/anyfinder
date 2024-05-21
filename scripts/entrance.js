@@ -26,7 +26,7 @@ function entrance() {
 
     allAds.classList.remove('navlist__item_disabled');
 
-    if (document.cookie.split(';')[3].split('=')[1] === '1') {
+    if (document.cookie.split(';')[3].split('=')[1] === '1' || document.cookie.split(';')[2].split('=')[1] === '1') {
       const moderationBtn = document.createElement('li');
       moderationBtn.classList.add('navlist__item');
       moderationBtn.classList.add('moderation-btn');

@@ -232,4 +232,8 @@ body {
 .add-button:active {
   background-color: rgb(178, 98, 253);
 }
+
+.add-button_disactive {
+  display: none;
+}
 /* main */
