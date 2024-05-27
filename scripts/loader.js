@@ -47,7 +47,9 @@ allAds.addEventListener('click', () => {
   const adsWrapper = document.querySelector('.ads');
   adsWrapper.innerHTML = '';
 
-  const loadMore = document.querySelector('.add-button');
+  if (search.classList.contains('add-button_disactive')) {
+    search.classList.remove('add-button_disactive');
+  }
 
   if (loadMore.classList.contains('add-button_disactive')) {
     loadMore.classList.remove('add-button_disactive');

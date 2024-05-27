@@ -4,6 +4,7 @@ function entrance() {
   const modalBack = document.querySelector('.modal-back');
   const modalWindow = document.querySelector('.modal-window');
   const loadMore = document.querySelector('.add-button');
+  const search = document.querySelector('.search');
 
   if (document.cookie) {
   
@@ -34,9 +35,15 @@ function entrance() {
       navList.appendChild(moderationBtn);
       
       moderationBtn.addEventListener('click', () => {
+
+        if (!search.classList.contains('add-button_disactive')) {
+          search.classList.add('add-button_disactive');
+        }
+
         if (!loadMore.classList.contains('add-button_disactive')) {
           loadMore.classList.add('add-button_disactive');
         }
+
         const adsWrapper = document.querySelector('.ads');
         const isModerator = true;
         adsWrapper.innerHTML = '';
@@ -52,6 +59,11 @@ function entrance() {
       navList.appendChild(usersBtn);
 
       usersBtn.addEventListener('click', () => {
+
+        if (!search.classList.contains('add-button_disactive')) {
+          search.classList.add('add-button_disactive');
+        }
+
         if (!loadMore.classList.contains('add-button_disactive')) {
           loadMore.classList.add('add-button_disactive');
         }
@@ -111,6 +123,11 @@ function entrance() {
       myAds.addEventListener('click', () => {
         const login = decodeURIComponent(document.cookie.split(';')[0].split('=')[1]);
         const isModerator = false;
+
+        if (!search.classList.contains('add-button_disactive')) {
+          search.classList.add('add-button_disactive');
+        }
+
         if (!loadMore.classList.contains('add-button_disactive')) {
           loadMore.classList.add('add-button_disactive');
         }
@@ -143,6 +160,10 @@ function entrance() {
       document.cookie = "admin=; max-age=-1; path=/";
       document.cookie = "moderator=; max-age=-1; path=/";
 
+      if (search.classList.contains('add-button_disactive')) {
+        search.classList.remove('add-button_disactive');
+      }
+
       if (loadMore.classList.contains('add-button_disactive')) {
         loadMore.classList.remove('add-button_disactive');
       }
@@ -170,7 +191,7 @@ function entrance() {
       loadAds();
       
     });
-    
+
   }
 
 }

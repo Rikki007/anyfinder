@@ -138,6 +138,11 @@ function ajaxUsers () {
             const loadMore = document.querySelector('.add-button');
             const adsWrapper = document.querySelector('.ads');
             const isModerator = false;
+            const search = document.querySelector('.search');
+
+            if (!search.classList.contains('add-button_disactive')) {
+              search.classList.add('add-button_disactive');
+            }
 
             if (!loadMore.classList.contains('add-button_disactive')) {
               loadMore.classList.add('add-button_disactive');
