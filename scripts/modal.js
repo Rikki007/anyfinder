@@ -146,6 +146,7 @@
     // submit data with help of ajax
 
     submitBtn.addEventListener('click', () => {
+
       const login = document.getElementById('login');
       const password = document.getElementById('password');
       let loginVal = login.value;
@@ -176,6 +177,7 @@
             entrance();
           }, 1000);
         }
+
         if (submitBtn.textContent === 'Login') {
           const typeOfAction = 'l';
           avatarNum = 'default';
@@ -188,12 +190,10 @@
             entrance();
           }, 1000);
         }
+
       }
     });
 
-    // function which work if inter in your account
-
-    entrance();
   }
 
   regBtn.addEventListener('click', () => {

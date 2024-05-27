@@ -89,6 +89,7 @@ function ajaxUsers () {
           userAds.appendChild(userAdsDescription);
           const userAdsBtn = document.createElement('button');
           userAdsBtn.classList.add('button');
+          userAdsBtn.classList.add('ads-of-user');
           userAdsBtn.textContent = 'show';
           userAds.appendChild(userAdsBtn);
 
@@ -134,8 +135,13 @@ function ajaxUsers () {
 
           userAdsBtn.addEventListener('click', () => {
 
+            const loadMore = document.querySelector('.add-button');
             const adsWrapper = document.querySelector('.ads');
             const isModerator = false;
+
+            if (!loadMore.classList.contains('add-button_disactive')) {
+              loadMore.classList.add('add-button_disactive');
+            }
 
             modalBack.classList.remove('modal-back_active');
             eventsList.remove();

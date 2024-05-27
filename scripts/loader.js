@@ -1,4 +1,6 @@
 const loadMore = document.querySelector('.add-button');
+const allAds = document.querySelector('.all-ads');
+const search = document.querySelector('.search');
 
 const loadAds = () => {
 
@@ -40,8 +42,20 @@ const loadAds = () => {
 
 }
 
-loadMore.addEventListener('click', () => {
+allAds.addEventListener('click', () => {
+
+  const adsWrapper = document.querySelector('.ads');
+  adsWrapper.innerHTML = '';
+
+  const loadMore = document.querySelector('.add-button');
+
+  if (loadMore.classList.contains('add-button_disactive')) {
+    loadMore.classList.remove('add-button_disactive');
+  }
+
   loadAds();
 });
+
+loadMore.addEventListener('click', loadAds);
 
 document.addEventListener('DOMContentLoaded', loadAds);

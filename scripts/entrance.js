@@ -3,14 +3,15 @@ function entrance() {
   const navItem = document.querySelectorAll('.navlist__item');
   const modalBack = document.querySelector('.modal-back');
   const modalWindow = document.querySelector('.modal-window');
-  const allAds = document.querySelector('.all-ads');
+  const loadMore = document.querySelector('.add-button');
 
   if (document.cookie) {
+  
     navItem.forEach((item) => {
-      item.classList.add('navlist__item_disabled');
+      if (!item.classList.contains('all-ads')) {
+        item.classList.add('navlist__item_disabled');
+      }
     });
-
-    allAds.classList.remove('navlist__item_disabled');
   
     const logOut = document.createElement('li');
     logOut.classList.add('navlist__item');
@@ -24,7 +25,6 @@ function entrance() {
     userProfile.textContent = 'Profile';
     navList.appendChild(userProfile);
 
-    allAds.classList.remove('navlist__item_disabled');
 
     if (document.cookie.split(';')[3].split('=')[1] === '1' || document.cookie.split(';')[2].split('=')[1] === '1') {
       const moderationBtn = document.createElement('li');
@@ -34,6 +34,9 @@ function entrance() {
       navList.appendChild(moderationBtn);
       
       moderationBtn.addEventListener('click', () => {
+        if (!loadMore.classList.contains('add-button_disactive')) {
+          loadMore.classList.add('add-button_disactive');
+        }
         const adsWrapper = document.querySelector('.ads');
         const isModerator = true;
         adsWrapper.innerHTML = '';
@@ -49,11 +52,12 @@ function entrance() {
       navList.appendChild(usersBtn);
 
       usersBtn.addEventListener('click', () => {
+        if (!loadMore.classList.contains('add-button_disactive')) {
+          loadMore.classList.add('add-button_disactive');
+        }
         ajaxUsers();
       });
     }
-
-    
 
     // user profile window
 
@@ -84,6 +88,7 @@ function entrance() {
 
       const myAds = document.createElement('button');
       myAds.setAttribute('type', 'button');
+      myAds.classList.add('ads-coller');
       myAds.classList.add('button');
       myAds.textContent = 'My abs';
       profileWrapper.appendChild(myAds);
@@ -105,7 +110,10 @@ function entrance() {
 
       myAds.addEventListener('click', () => {
         const login = decodeURIComponent(document.cookie.split(';')[0].split('=')[1]);
-        const isModerator = false;     
+        const isModerator = false;
+        if (!loadMore.classList.contains('add-button_disactive')) {
+          loadMore.classList.add('add-button_disactive');
+        }
         modalBack.classList.remove('modal-back_active');
         profileWrapper.remove();
         body.classList.remove('body_inactive');
@@ -129,10 +137,16 @@ function entrance() {
     // delete cookies and elements of navbar when the client is log out
 
     logOut.addEventListener('click', () => {
+
       document.cookie = "username=; max-age=-1; path=/";
       document.cookie = "avatar=; max-age=-1; path=/";
       document.cookie = "admin=; max-age=-1; path=/";
       document.cookie = "moderator=; max-age=-1; path=/";
+
+      if (loadMore.classList.contains('add-button_disactive')) {
+        loadMore.classList.remove('add-button_disactive');
+      }
+
       logOut.remove();
       userProfile.remove();
 
@@ -151,23 +165,12 @@ function entrance() {
       });
 
       const adsWrapper = document.querySelector('.ads');
-
-      while (adsWrapper.firstChild) {
-        adsWrapper.removeChild(adsWrapper.firstChild);
-      }
+      adsWrapper.innerHTML = '';
 
       loadAds();
+      
     });
+    
   }
 
-  allAds.addEventListener('click', () => {
-
-    const adsWrapper = document.querySelector('.ads');
-    adsWrapper.innerHTML = '';
-
-    loadAds();
-  });
-
 }
-
-entrance();
