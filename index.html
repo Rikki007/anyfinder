@@ -36,8 +36,33 @@
   </div>
   <main class="main">
     <article  class="main-container">
-      <section class="ads">    
-      </section>
+      <aside class="sort">
+        <h2 class="sort__title">Sorting</h2>
+        <fieldset>
+          <legend>sort by date</legend>
+          <div class="date-new">
+            <input type="radio" class="date-new__input" id="new" checked>
+            <label for="new" class="date-new__label">new first</label>
+          </div>
+          <div class="date-old">
+            <input type="radio" class="date-old__input" id="old">
+            <label for="old" class="date-old__label">old first</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>sort by type</legend>
+          <div class="type-purchase">
+            <input type="radio" class="type-purchase__input" id="purchase" checked>
+            <label for="purchase" class="type-purchase__label">purchase</label>
+          </div>
+          <div class="type-sale">
+            <input type="radio" class="type-sale__input" id="sale">
+            <label for="sale" class="type-sale__label">sale</label>
+          </div>
+        </fieldset>
+        <button class="sorting sort-button">start sorting</button>
+      </aside>
+      <section class="ads"></section>
     </article>
     <button class="add-button">load more</button>
   </main>

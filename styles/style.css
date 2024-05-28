@@ -206,12 +206,35 @@ body {
   margin-top: 3rem;
   padding-left: 2rem;
   display: flex;
+  gap: 2rem;
   justify-content: center;
   position: relative;
   z-index: 1;
 }
 
+.sort {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
+.sort-button {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: transparent;
+  background-color: rgb(111, 58, 160);
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sort-button:hover {
+  box-shadow: 1px 1px 2px black;
+}
+
+.sort-button:active {
+  background-color: rgb(178, 98, 253);
+}
 
 .ads {
   background-color: rgb(233, 225, 211);
