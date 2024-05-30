@@ -216,6 +216,37 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
+}
+
+.sort-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transform: translateY(-60vh);
+  transition: all linear 0.3s;
+}
+
+.sort-fields_active {
+  transform: translateY(0.5rem);
+}
+
+.sort-shower {
+  margin: 0.2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  transform: rotate(0);
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.sort-shower_rotate {
+  transform: rotate(180deg);
 }
 
 .sort-button {
