@@ -2,17 +2,23 @@
 const showBtn = document.querySelector('.sort-shower');
 const menu = document.querySelector('.sort-fields');
 let isOpen = false;
+const searchFunc = document.querySelector('.search');
+const addBtn = document.querySelector('.add-button');
 
 const showMenu = () => {
   showBtn.classList.add('sort-shower_rotate');
   menu.classList.add('sort-fields_active');
-  isOpen = true; 
+  isOpen = true;
+  searchFunc.classList.add('search_disabled');
+  addBtn.classList.add('add-button_disactive');
 }
 
 const closeMenu = () => {
   showBtn.classList.remove('sort-shower_rotate');
   menu.classList.remove('sort-fields_active');
   isOpen = false;
+  searchFunc.classList.remove('search_disabled');
+  addBtn.classList.remove('add-button_disactive');
 }
 
 showBtn.addEventListener('click', () => {
@@ -91,6 +97,17 @@ sortBtn.addEventListener('click', () => {
   request.setRequestHeader('Content-Type', 'application/json');
   request.addEventListener('load', () => {
     if (request.status >= 200 && request.status < 300) {
+
+      const container = document.querySelector('.ads');
+      container.innerHTML = '';
+
+      const arrayAds = JSON.parse(request.response);
+
+      for (let i = 0; i < arrayAds.length; i += 1) {
+
+        myAds(arrayAds[i]);
+
+      }
 
     } else {
 
